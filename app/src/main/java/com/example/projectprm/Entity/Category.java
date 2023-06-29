@@ -21,5 +21,5 @@ public class Category {
     public String image;
 
     @ColumnInfo(name = "isDelete")
-    public boolean isDelete;
+    public boolean isDelete  = false;
 }

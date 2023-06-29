@@ -39,7 +39,7 @@ public class Product {
     public int supplyId;
 
     @ColumnInfo(name = "isDelete")
-    public boolean isDelete;
+    public boolean isDelete  = false;
 
 
 }

@@ -19,6 +19,6 @@ public class OrderDetail {
     public double price;
 
     @ColumnInfo(name = "isDelete")
-    public boolean isDelete;
+    public boolean isDelete = false;
 
 }
