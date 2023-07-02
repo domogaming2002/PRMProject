@@ -95,7 +95,6 @@
                     android:background="@drawable/retangle_border"
                     android:text="+" />
             </LinearLayout>
-
         </LinearLayout>
     </LinearLayout>
 

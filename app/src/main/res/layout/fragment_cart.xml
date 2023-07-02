@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/lightest_gray"
+        android:orientation="vertical">
+
+<!--        header-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/primary">
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="back arrow"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_24" />
+            <TextView
+                style="@style/textBase"
+                android:text="Giỏ Hàng"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+<!--        ship fee-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkedAllItem"
+                android:layout_width="30dp"
+                android:layout_height="34dp"
+                android:layout_marginHorizontal="15dp"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:checked="false" />
+            <TextView
+                style="@style/normalText"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="50dp"
+                android:text="Tất cả (21 sản phẩm)"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:contentDescription="remove trash bin"
+                android:src="@drawable/ic_trash_remove_24" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCart"
+            android:layout_width="match_parent"
+            android:layout_height="550dp"
+            android:layout_marginTop="5dp"
+            tools:listitem="@layout/cart_product_item" />
+
+<!--        ORDER BUTTON-->
+        <RelativeLayout
+            style="@style/layoutBase"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:layout_height="60dp">
+            <TextView
+                style="@style/textBase"
+                android:id="@id/totalString"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="@string/total"/>
+
+            <TextView
+                style="@style/MainPrice"
+                android:textSize="24sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/red"
+                android:text="98.200 đ"
+                android:layout_below="@+id/totalString"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/white"
+                android:background="@color/red"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="0dp"
+                android:textAllCaps="false"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp"
+                android:text="Mua Hàng"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

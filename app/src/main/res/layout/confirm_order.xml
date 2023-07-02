@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightest_gray">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addressPart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/icLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/customerNameTxt"
+            style="@style/h3Text"
+            android:layout_marginStart="10dp"
+            android:text="Mai Văn Dũng"
+            app:layout_constraintStart_toEndOf="@+id/icLocation"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:background="@color/lightest_gray"
+            app:layout_constraintStart_toEndOf="@+id/customerNameTxt"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/customerPhoneTxt"
+            style="@style/h3Text"
+            android:layout_marginStart="5dp"
+            android:text="0961595581"
+            app:layout_constraintStart_toEndOf="@+id/divider"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/customerAddressTxt"
+            style="@style/textBase"
+            android:layout_width="370dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Nhà trọ Lư Tranh, Thôn 3 (cạnh trung tâm GDQPAN ĐHQG HN), Xã Thạch Hòa, Huyện Thạch Thất, Hà Nọi"
+            android:textColor="@color/darkgray"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/icLocation" />
+
+        <ImageView
+            android:id="@+id/icRightArrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/customerAddressTxt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/deliveryPart"
+        style="@style/layoutBase"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addressPart">
+
+        <TextView
+            style="@style/h3Text"
+            android:text="Chọn hình thức giao hàng" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                tools:listitem="@layout/order_item" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/textBase"
+            android:layout_width="match_parent"
+            android:height="50dp"
+            android:background="#F1F1F7"
+            android:padding="5dp"
+            android:text="Được giao bởi TikiNow Smart Logistics (giao từ Hà Nội)"
+            android:textColor="@color/gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/paymentPart"
+        style="@style/layoutBase"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deliveryPart">
+
+        <TextView
+            style="@style/h3Text"
+            android:text="Phương thức thanh toán" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp">
+
+            <RadioButton
+                android:id="@+id/cashPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/primary"
+                android:layout_margin="5dp" />
+
+            <ImageView
+                android:id="@+id/cashPaymentImage"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="5dp"
+                android:layout_toRightOf="@+id/cashPayment"
+                android:src="@drawable/cashpayment" />
+
+            <TextView
+                style="@style/textBase"
+                android:layout_toRightOf="@+id/cashPaymentImage"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:text="Thanh toán tiền mặt" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp">
+
+            <RadioButton
+                android:id="@+id/atmPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:buttonTint="@color/primary"
+                android:layout_margin="5dp" />
+
+            <ImageView
+                android:id="@+id/atmPaymentImage"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="5dp"
+                android:layout_toRightOf="@+id/atmPayment"
+                android:src="@drawable/atm_payment" />
+
+            <TextView
+                style="@style/textBase"
+                android:layout_toRightOf="@+id/atmPaymentImage"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:text="Thẻ ATM | Internet Banking" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/countMoneyPart"
+        style="@style/layoutBase"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:padding="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paymentPart">
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            style="@style/layoutBase">
+            <TextView
+                style="@style/smallerText"
+                android:text="Tạm tính" />
+            <TextView
+                style="@style/smallerText"
+                android:text="29.900.000 đ"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            style="@style/layoutBase">
+            <TextView
+                style="@style/smallerText"
+                android:text="Phí vận chuyển" />
+            <TextView
+                style="@style/smallerText"
+                android:text="114.000 đ"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            style="@style/layoutBase">
+            <TextView
+                style="@style/smallerText"
+                android:text="Khuyến mãi vận chuyển" />
+            <TextView
+                style="@style/smallerText"
+                android:text="-114.000 đ"
+                android:textColor="@color/green"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            style="@style/layoutBase">
+            <TextView
+                style="@style/smallerText"
+                android:text="Giảm giá" />
+            <TextView
+                style="@style/smallerText"
+                android:text="-200.000 đ"
+                android:textColor="@color/green"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/lighter_gray" />
+
+        <RelativeLayout
+            android:layout_marginTop="5dp"
+            style="@style/layoutBase">
+            <TextView
+                style="@style/smallerText"
+                android:textStyle="bold"
+                android:text="Tổng tiền" />
+            <TextView
+                style="@style/smallerText"
+                android:text="29.700.000 đ"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+<!--    CONFIRM ORDER BUTTON-->
+    <RelativeLayout
+        style="@style/layoutBase"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countMoneyPart">
+        <TextView
+            style="@style/textBase"
+            android:id="@id/totalString"
+            android:layout_marginTop="5dp"
+            android:textSize="12sp"
+            android:text="Tổng tiền"/>
+
+        <TextView
+            style="@style/MainPrice"
+            android:textSize="24sp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/red"
+            android:text="29.700.000 đ"
+            android:layout_below="@+id/totalString"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="0dp"
+            android:textAllCaps="false"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:text="Đặt Hàng"/>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
