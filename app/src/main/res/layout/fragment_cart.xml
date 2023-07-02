@@ -69,6 +69,8 @@
             android:layout_height="550dp"
             android:layout_marginTop="5dp"
             tools:listitem="@layout/cart_product_item" />
+
+<!--        ORDER BUTTON-->
         <RelativeLayout
             style="@style/layoutBase"
             android:layout_marginTop="5dp"
