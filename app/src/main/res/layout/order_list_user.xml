@@ -40,8 +40,8 @@
             android:background="@drawable/retangle_border_grey"
             android:orientation="horizontal">
             <ImageView
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:contentDescription="search icon"
@@ -51,53 +51,70 @@
                 style="@style/textBase"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="50dp"
+                android:background="@null"
                 android:hint="Tìm mã đơn hàng"/>
 
-
         </RelativeLayout>
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_all_orders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp"
+                    android:text="Tất cả đơn" />
+
+                <Button
+                    android:id="@+id/btn_pending"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:text="Chờ thanh toán" />
+
+                <Button
+                    android:id="@+id/btn_processing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đang xử lý" />
+
+                <Button
+                    android:id="@+id/btn_shipping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đang vận chuyển" />
+
+                <Button
+                    android:id="@+id/btn_delivered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đã giao" />
+
+                <Button
+                    android:id="@+id/btn_cancelled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đã hủy" />
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCart"
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            tools:listitem="@layout/cart_product_item" />
+            tools:listitem="@layout/order_item" />
 
-        <!--        ORDER BUTTON-->
-        <RelativeLayout
-            style="@style/layoutBase"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:layout_height="60dp">
-            <TextView
-                style="@style/textBase"
-                android:id="@id/totalString"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                android:text="@string/total"/>
 
-            <TextView
-                style="@style/MainPrice"
-                android:textSize="24sp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/red"
-                android:text="98.200 đ"
-                android:layout_below="@+id/totalString"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:textColor="@color/white"
-                android:background="@color/red"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="0dp"
-                android:textAllCaps="false"
-                android:layout_alignParentEnd="true"
-                android:gravity="center"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="10dp"
-                android:text="Mua Hàng"/>
-        </RelativeLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

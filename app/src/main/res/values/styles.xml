@@ -30,6 +30,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="h4Text" parent="@style/textBase">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="smallerText" parent="@style/textBase">
         <item name="android:textSize">15sp</item>
     </style>
