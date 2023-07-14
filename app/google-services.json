@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "320931730950",
+    "project_id": "prmgroupproject",
+    "storage_bucket": "prmgroupproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320931730950:android:c4ceb667d611aa11401587",
+        "android_client_info": {
+          "package_name": "com.example.projectprm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320931730950-8qk2fo1v5djb56h84bfq7l9vf4i1sjk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx4SKtiPm4lF8yKhd4J9YYTlVGtLFm4UI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320931730950-8qk2fo1v5djb56h84bfq7l9vf4i1sjk6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

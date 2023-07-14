@@ -4,22 +4,51 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
 public class Category {
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "categoryId")
-    public int categoryId;
+    private String name;
 
-    @ColumnInfo(name = "name")
-    public String name;
+    private int parentId;
 
-    @ColumnInfo(name = "parentId")
-    public int parentId;
+    private String image;
 
-    @ColumnInfo(name = "image")
-    public String image;
+    private boolean isDelete  = false;
+    public String getName() {
+        return name;
+    }
 
-    @ColumnInfo(name = "isDelete")
-    public boolean isDelete  = false;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
+
+    public Category(String name, int parentId, String image, boolean isDelete) {
+        this.name = name;
+        this.parentId = parentId;
+        this.image = image;
+        this.isDelete = isDelete;
+    }
 }
