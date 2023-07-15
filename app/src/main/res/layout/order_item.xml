@@ -102,12 +102,12 @@
             </RelativeLayout>
         </LinearLayout>
         <Button
-            android:layout_width="150dp"
-            android:layout_height="35dp"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
             android:text="Xem Chi Tiết"
             android:textAllCaps="false"
-            android:background="@color/lightest_gray"
-            android:textColor="@color/primary"/>
+            android:background="@drawable/button_border"
+            android:textColor="@color/darkerPrimary"/>
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
