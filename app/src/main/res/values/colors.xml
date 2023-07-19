@@ -10,4 +10,8 @@
     <color name="darkgray">#808089</color>
     <color name="lighter_gray">#999999</color>
     <color name="lightest_gray">#DEDEDF</color>
+    <color name="colorPrimary">#1771ac</color>
+    <color name="colorPrimaryDark">#1771ac</color>
+    <color name="Accent">#1771ac</color>
+    <color name="superLightGrey">#f4f3f8</color>
 </resources>
