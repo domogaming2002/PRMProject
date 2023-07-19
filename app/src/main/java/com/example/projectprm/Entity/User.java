@@ -19,6 +19,9 @@ public class User {
     @ColumnInfo(name = "passwordHash")
     public String passwordHash;
 
+    @ColumnInfo(name = "roleId")
+    public int roleId;
+
     @Nullable
     @ColumnInfo(name = "firstname")
     public String firstname;
