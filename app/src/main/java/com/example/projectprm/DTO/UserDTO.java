@@ -11,6 +11,7 @@ public class UserDTO {
     private String email;
     private String passwordHash;
     private int roleId;
+    private RoleDTO role;
     private String firstname;
     private String lastname;
     private boolean gender;
@@ -38,6 +39,31 @@ public class UserDTO {
         this.avatar = avatar;
         this.isActive = isActive;
         this.isDelete = isDelete;
+    }
+
+    public UserDTO(int userId, String email, String passwordHash, int roleId, RoleDTO role, String firstname, String lastname, boolean gender, String address, Date dob, String phoneNumber, String avatar, boolean isActive, boolean isDelete) {
+        this.userId = userId;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.roleId = roleId;
+        this.role = role;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.gender = gender;
+        this.address = address;
+        this.dob = dob;
+        this.phoneNumber = phoneNumber;
+        this.avatar = avatar;
+        this.isActive = isActive;
+        this.isDelete = isDelete;
+    }
+
+    public RoleDTO getRole() {
+        return role;
+    }
+
+    public void setRole(RoleDTO role) {
+        this.role = role;
     }
 
     public int getRoleId() {
