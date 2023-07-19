@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDEDEF"
+        android:orientation="vertical">
+
+        <!--        header-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/primary">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:contentDescription="back arrow"
+                android:src="@drawable/ic_arrow_back_24" />
+
+            <TextView
+                style="@style/textBase"
+                android:layout_centerInParent="true"
+                android:text="Đơn Hàng"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- Order CODE -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/addressPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/icOrderCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_order_code_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/customerNameTxt"
+                style="@style/h4Text"
+                android:layout_marginStart="5dp"
+                android:text="Mã Đơn Hàng:"
+                android:textSize="13dp"
+                android:fontFamily="@font/inter_light"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/icOrderCode"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/customerPhoneTxt"
+                style="@style/h4Text"
+                android:fontFamily="@font/inter_light"
+                android:textSize="13dp"
+                android:layout_marginStart="5dp"
+                android:text="284095440"
+                app:layout_constraintStart_toEndOf="@+id/customerNameTxt"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/orderDateLabel"
+                style="@style/textBase"
+                android:layout_marginStart="28dp"
+                android:text="Ngày đặt hàng: "
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icOrderCode" />
+            <TextView
+                android:id="@+id/orderDateTxt"
+                style="@style/textBase"
+                android:layout_width="370dp"
+                android:layout_marginStart="5dp"
+                android:text="22:56, 06/07/2023"
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@+id/orderDateLabel"
+                app:layout_constraintTop_toBottomOf="@id/icOrderCode" />
+
+            <TextView
+                android:id="@+id/orderStatusTxt"
+                style="@style/h3Text"
+                android:layout_marginStart="28dp"
+                android:text="Giao hàng thành công"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/orderDateLabel" />
+
+            <ImageView
+                android:id="@+id/icRightArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_right_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/orderDateLabel" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Order Status -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/statusPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginTop="8dp"
+            android:padding="10dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/icDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_order_code_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/orderTrackingHeading"
+                style="@style/h4Text"
+                android:layout_marginStart="5dp"
+                android:text="Theo Dõi Đơn Hàng"
+                android:textSize="13dp"
+                android:fontFamily="@font/inter_light"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/icDelivery"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/orderCurrentStatusTxt"
+                style="@style/h3Text"
+                android:layout_marginStart="28dp"
+                android:text="Giao hàng thành công"
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icDelivery" />
+
+            <TextView
+                android:id="@+id/orderCurrentStatusDateTxt"
+                style="@style/textBase"
+                android:layout_width="370dp"
+                android:layout_marginStart="28dp"
+                android:text="22:56, 06/07/2023"
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/orderCurrentStatusTxt" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- USER INFO -->
+        <LinearLayout
+            android:id="@+id/userInfoPart"
+            style="@style/layoutBase"
+            android:background="@color/white"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                style="@style/layoutBase">
+                <ImageView
+                    android:id="@+id/icUserLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_location_24"/>
+
+                <TextView
+                    android:id="@+id/orderDeliveryInfoHeading"
+                    style="@style/h4Text"
+                    android:layout_marginStart="5dp"
+                    android:text="Địa chỉ người nhận"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/inter_light"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/icUserLocation"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/orderCustomerName"
+                style="@style/h3Text"
+                android:layout_marginStart="28dp"
+                android:text="Mai Văn Dũng"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/orderCustomerPhoneTxt"
+                style="@style/textBase"
+                android:layout_width="370dp"
+                android:layout_marginStart="28dp"
+                android:text="0961595581"
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"/>
+            <TextView
+                android:id="@+id/customerAddressTxt"
+                style="@style/textBase"
+                android:layout_width="330dp"
+                android:layout_marginStart="28dp"
+                android:text="Nhà trọ Lư Tranh, Thôn 3 (cạnh trung tâm GDQPAN ĐHQG HN), Xã Thạch Hòa, Huyện Thạch Thất, Hà Nọi"
+                android:textColor="@color/darkgray"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- USER INFO -->
+        <LinearLayout
+            android:id="@+id/orderListPart"
+            style="@style/layoutBase"
+            android:background="@color/white"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                style="@style/layoutBase">
+                <ImageView
+                    android:id="@+id/icSupplier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_location_24"/>
+
+                <TextView
+                    style="@style/h4Text"
+                    android:layout_marginStart="5dp"
+                    android:text="Tiki Trading"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/inter_light"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/icUserLocation"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+
+
+            <TextView
+                style="@style/textBase"
+                android:layout_width="370dp"
+                android:layout_marginStart="28dp"
+                android:text="Nhà bán chưa hỗ trợ chức năng chat"
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"/>
+
+<!--            List đơn hàng-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:itemCount="2"
+                tools:listitem="@layout/cart_item" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
