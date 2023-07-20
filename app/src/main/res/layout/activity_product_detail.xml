@@ -6,203 +6,216 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     tools:context=".activity.ProductDetail">
-
-    <ImageView
-        android:id="@+id/productDetailImage"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/anh1" />
-
-    <TextView
-        android:id="@+id/productDetailName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/productDetailImage"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Thieen su nha ben "
-        android:textSize="25sp" />
-
-    <LinearLayout
-        android:id="@+id/LinenearRate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/productDetailName"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/productDetailRateNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5.0"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <RatingBar
-            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
-            android:layout_width="80dp"
-            android:layout_height="20dp"
-            android:layout_marginLeft="10dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:progressTint="#ffc301"
-            android:rating="4.2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:text="Đã bán "
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/productDetailItemSold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="896"
-            android:textSize="15dp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/productDetailSalePrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/LinenearRate"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="74.000đ"
-        android:textSize="30dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/LinenearRate"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/productDetailSalePrice"
-        android:text="22%"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnAddProductToCart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/productDetailSalePrice"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:background="#ff3a4a"
-        android:text="Thêm vào giỏ"
-        android:textColor="#FFFFFF" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnAddProductToCart"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Thông tin vận chuyển"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:id="@+id/LinearAddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnAddProductToCart"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Giao đến " />
-
-        <TextView
-            android:layout_width="310dp"
-            android:layout_height="wrap_content"
-            android:text="Q.1.P, Bến nghé, TP Hồ Chí Minh"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đổi"
-            android:textColor="#4c65c4" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearPolicyShip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/LinearAddress"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
-
-        <TextView
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Yên tâm mua sắm"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/productDetailImage"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/anh1" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Được mở hộp kiê nha khi nhận hàng"
-            android:textSize="15sp" />
+            <TextView
+                android:id="@+id/productDetailName"
+                android:layout_width="399dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productDetailImage"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Thieen su nha ben "
+                android:textSize="25sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Được hoàn tiền 111% nếu là hàng giả"
-            android:textSize="15sp" />
+            <LinearLayout
+                android:id="@+id/LinenearRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productDetailName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đổi trả miễn phí tại nhà trong 30 ngày nếu sản phẩm lỗi"
-            android:textSize="15sp" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/productDetailRateNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5.0"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-    <LinearLayout
-        android:id="@+id/linearProductDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearPolicyShip"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
+                <RatingBar
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressTint="#ffc301"
+                    android:rating="4.2" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mô tả sản phẩm"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Amane Fujimiya là một học sinh cao trung sống một mình. Cậu đang có một cuộc sống vô cùng bình thường cho đến một hôm cậu bắt gặp Shiina Mahiru- người con gái đẹp nhất trường với biệt danh là ‘Thiên sứ’ đồng thời cũng là hàng xóm (nhưng vẫn chưa nói chuyện lần nào) của cậu- đang ngồi một mình dưới trời mưa. Amane đã giúp Mahiru và câu chuyện lãng mạn của họ bắt đầu từ đây.
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="Đã bán "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/productDetailItemSold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="896"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/productDetailSalePrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/LinenearRate"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="74.000đ"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/productDetailDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/LinenearRate"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/productDetailSalePrice"
+                android:text="22%"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+
+            <Button
+                android:id="@+id/btnAddProductToCart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/productDetailSalePrice"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#ff3a4a"
+                android:text="Thêm vào giỏ"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnAddProductToCart"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Thông tin vận chuyển"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/LinearAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnAddProductToCart"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giao đến " />
+
+                <TextView
+                    android:id="@+id/userAddress"
+                    android:layout_width="310dp"
+                    android:layout_height="wrap_content"
+                    android:text="Q.1.P, Bến nghé, TP Hồ Chí Minh"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đổi"
+                    android:textColor="#4c65c4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearPolicyShip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/LinearAddress"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Yên tâm mua sắm"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Được mở hộp kiê nha khi nhận hàng"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Được hoàn tiền 111% nếu là hàng giả"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đổi trả miễn phí tại nhà trong 30 ngày nếu sản phẩm lỗi"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearProductDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linearPolicyShip"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mô tả sản phẩm"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/productDetailDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Amane Fujimiya là một học sinh cao trung sống một mình. Cậu đang có một cuộc sống vô cùng bình thường cho đến một hôm cậu bắt gặp Shiina Mahiru- người con gái đẹp nhất trường với biệt danh là ‘Thiên sứ’ đồng thời cũng là hàng xóm (nhưng vẫn chưa nói chuyện lần nào) của cậu- đang ngồi một mình dưới trời mưa. Amane đã giúp Mahiru và câu chuyện lãng mạn của họ bắt đầu từ đây.
 
 Tóm tắt diễn biến:
 
 Trước chương 100: Amane và Mahiru đã gần gũi nhau hơn (nhưng vẫn chưa là người yêu), họ vừa trải qua một kì kiểm tra và đã đến lúc nhận phần thưởng từ Thiên sứ.
 
 Trước chương 214: Amane và Mahiru (lúc này đã học chung lớp) là người yêu của nhau, hiện tại trường họ đang tổ chức lễ hội văn hóa và lớp của Amane thì làm café hầu gái."
-            />
-    </LinearLayout>
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
 </RelativeLayout>
