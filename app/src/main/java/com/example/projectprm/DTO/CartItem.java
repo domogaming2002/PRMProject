@@ -5,17 +5,19 @@ public class CartItem {
     private ProductDTO product;
     private int quantity;
     private int price;
+    private boolean checked;
 
 
     public CartItem() {
 
     }
 
-    public CartItem(int id, ProductDTO product, int quantity, int price) {
+    public CartItem(int id, ProductDTO product, int quantity, int price, boolean checked) {
         this.id = id;
         this.product = product;
         this.quantity = quantity;
         this.price = price;
+        this.checked = checked;
     }
 
     public int getId() {
@@ -48,5 +50,13 @@ public class CartItem {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }

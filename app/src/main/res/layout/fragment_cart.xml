@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightest_gray"
-        android:orientation="vertical">
+        android:background="@color/lightest_gray">
 
 <!--        header-->
         <RelativeLayout
+            android:id="@+id/layout1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/primary">
@@ -34,8 +34,9 @@
 
 <!--        ship fee-->
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/layout2"
+            android:layout_below="@+id/layout1"
+            style="@style/layoutBase"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:orientation="horizontal">
@@ -64,19 +65,19 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCart"
-            android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:id="@+id/rvCartList"
+            android:layout_below="@+id/layout2"
+            style="@style/layoutBase"
             android:layout_marginTop="5dp"
             tools:itemCount="4"
             app:spanCount="1"
-
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/cart_item" />
 
 <!--        ORDER BUTTON-->
         <RelativeLayout
             style="@style/layoutBase"
+            android:layout_alignParentBottom="true"
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
             android:layout_height="60dp">
@@ -89,6 +90,7 @@
 
             <TextView
                 style="@style/MainPrice"
+                android:id="@+id/tempCountMoney"
                 android:textSize="24sp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/red"
@@ -96,6 +98,7 @@
                 android:layout_below="@+id/totalString"/>
 
             <Button
+                android:id="@+id/clickToBuy"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:textColor="@color/white"
@@ -110,5 +113,5 @@
                 android:text="Mua Hàng"/>
         </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

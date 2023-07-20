@@ -61,7 +61,7 @@ public class ListProductActivity extends AppCompatActivity {
         productDTOS = new ArrayList<>();
         inItRoomDatabase();
         productList = productDAO.getListProduct();
-//        createProduct();
+        createProduct();
         for (Product product : productList) {
             //ProductDTO(int productId, String name, int unitInStock, double salePrice, String image, double rating, String description, int categoryId, int supplyId, boolean isDelete)
             productDTOS.add(new ProductDTO(product.productId, product.name, product.unitInStock, product.salePrice, product.oldPrice, product.image,

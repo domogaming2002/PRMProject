@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +32,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
     public CartViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View cartView = inflater.inflate(R.layout.order_detail_item, parent, false);
+        View cartView = inflater.inflate(R.layout.cart_item, parent, false);
         CartViewHolder viewHolder = new CartViewHolder(cartView, listener);
         return viewHolder;
     }
@@ -40,26 +42,29 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
         CartItem cart = cartItems.get(position);
         holder.productName.setText(cart.getProduct().getName());
         holder.quantity.setText(String.valueOf(cart.getQuantity()));
-        holder.oldPrice.setText(String.valueOf(cart.getPrice()));
+        holder.oldPrice.setText(String.valueOf(cart.getProduct().getOldPrice()));
+        holder.salePrice.setText(String.valueOf(cart.getProduct().getSalePrice()));
+        holder.itemChooseCb.setChecked(cart.isChecked());
         int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
-//        holder.image.setImageResource(drawableId);
-        holder.btnMinus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onMinusBtnClick(position);
-                }
-            }
-        });
+        holder.image.setImageResource(drawableId);
 
-        holder.btnPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    listener.onPlusBtnClick(position);
-                }
-            }
-        });
+//        holder.btnMinus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (listener != null) {
+//                    listener.onMinusBtnClick(position);
+//                }
+//            }
+//        });
+//
+//        holder.btnPlus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (listener != null) {
+//                    listener.onPlusBtnClick(position);
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -76,16 +81,20 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
         public TextView btnPlus;
         public CheckBox itemChooseCb;
 
+        public ImageView image;
+
         public CartViewHolder(View itemView, OnCartItemClickListener listener) {
             super(itemView);
 
             itemChooseCb = itemView.findViewById(R.id.checkedItem);
             productName = itemView.findViewById(R.id.tvProductCartName);
             quantity = itemView.findViewById(R.id.tvCartProductQuantity);
+            image = itemView.findViewById(R.id.imageCartProduct);
             salePrice = itemView.findViewById(R.id.promotionPrice);
             oldPrice = itemView.findViewById(R.id.oldPrice);
             btnMinus = itemView.findViewById(R.id.btnMinus);
             btnPlus = itemView.findViewById(R.id.btnPlus);
+
             btnMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -101,6 +110,16 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         listener.onPlusBtnClick(position);
+                    }
+                }
+            });
+
+            itemChooseCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onCheckToBuyChange(position, isChecked);
                     }
                 }
             });
