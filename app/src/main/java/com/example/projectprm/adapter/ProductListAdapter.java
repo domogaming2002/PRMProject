@@ -2,6 +2,7 @@ package com.example.projectprm.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +22,12 @@ import java.util.List;
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListViewHolder> {
     private List<ProductDTO> productDTOList;
     private Context context;
+    private int userId;
 
-    public ProductListAdapter(List<ProductDTO> productDTOList, Context context) {
+    public ProductListAdapter(List<ProductDTO> productDTOList, Context context, int userId) {
         this.productDTOList = productDTOList;
         this.context = context;
+        this.userId = userId;
     }
 
     @NonNull
@@ -49,6 +52,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListViewHold
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProductDetail.class);
                 intent.putExtra("productId",productDTO.getProductId());
+                intent.putExtra("userId",userId);
                 context.startActivity(intent);
             }
         });

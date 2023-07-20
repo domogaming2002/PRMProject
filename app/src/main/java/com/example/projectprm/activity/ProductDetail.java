@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.projectprm.DAO.ProductDAO;
+import com.example.projectprm.DAO.UserDAO;
 import com.example.projectprm.DTO.AppDatabase;
 import com.example.projectprm.DTO.ProductDTO;
 import com.example.projectprm.Entity.Product;
+import com.example.projectprm.Entity.User;
 import com.example.projectprm.R;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +24,7 @@ public class ProductDetail extends AppCompatActivity {
 
     AppDatabase db;
     ProductDAO productDAO;
+    UserDAO userDAO;
     ImageView image;
     TextView productName, productSalePrice,productDiscount, address, productDescription;
     Button addToCart;
@@ -30,8 +33,9 @@ public class ProductDetail extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "PRM")
                 .allowMainThreadQueries().build();
         productDAO = db.productDAO();
-
+        userDAO = db.userDAO();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +43,9 @@ public class ProductDetail extends AppCompatActivity {
         inItRoomDatabase();
         Bundle extra = getIntent().getExtras();
         int productId = extra.getInt("productId",0);
+        int userId = extra.getInt("userId",0);
+        User u = userDAO.getUserById(userId);
+
         product = productDAO.findProductById(productId);
         image = findViewById(R.id.productDetailImage);
         Picasso.get().load(product.image).into(image);
@@ -53,6 +60,7 @@ public class ProductDetail extends AppCompatActivity {
         productDiscount.setText("-" +formatter.format(discount ) + "%");
 
         address = findViewById(R.id.userAddress);
+        address.setText(u.address);
 
         productDescription = findViewById(R.id.productDetailDescription);
         productDescription.setText(product.description);
