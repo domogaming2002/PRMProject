@@ -61,7 +61,7 @@
             app:layout_constraintTop_toBottomOf="@id/icLocation" />
 
         <ImageView
-            android:id="@+id/icRightArrow"
+            android:id="@+id/icChangeAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_right_24"
@@ -72,6 +72,8 @@
     <LinearLayout
         android:id="@+id/deliveryPart"
         style="@style/layoutBase"
+        android:layout_width="417dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:padding="10dp"
@@ -83,16 +85,16 @@
             android:text="Chọn hình thức giao hàng" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
+            style="@style/layoutBase"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5dp">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCart"
+                android:id="@+id/rvBuyOrderList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                tools:itemCount="0"
                 tools:listitem="@layout/order_detail_item" />
         </LinearLayout>
 
@@ -200,6 +202,7 @@
                 android:text="Tạm tính" />
             <TextView
                 style="@style/smallerText"
+                android:id="@+id/tempOrderMoney"
                 android:text="29.900.000 đ"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>
@@ -213,6 +216,7 @@
             <TextView
                 style="@style/smallerText"
                 android:text="114.000 đ"
+                android:id="@+id/shipFee"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>
 
@@ -222,11 +226,13 @@
             <TextView
                 style="@style/smallerText"
                 android:text="Khuyến mãi vận chuyển" />
+
             <TextView
+                android:id="@+id/shipDiscount"
                 style="@style/smallerText"
+                android:layout_alignParentEnd="true"
                 android:text="-114.000 đ"
-                android:textColor="@color/green"
-                android:layout_alignParentEnd="true"/>
+                android:textColor="@color/green" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_marginTop="5dp"
@@ -236,7 +242,7 @@
                 android:text="Giảm giá" />
             <TextView
                 style="@style/smallerText"
-                android:text="-200.000 đ"
+                android:text="-0 đ"
                 android:textColor="@color/green"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>
@@ -256,6 +262,7 @@
                 android:text="Tổng tiền" />
             <TextView
                 style="@style/smallerText"
+                android:id="@+id/orderAfterDiscount"
                 android:text="29.700.000 đ"
                 android:textStyle="bold"
                 android:layout_alignParentEnd="true"/>
@@ -280,24 +287,29 @@
         <TextView
             style="@style/MainPrice"
             android:textSize="24sp"
+            android:id="@+id/orderAfterDiscount2"
             android:fontFamily="@font/roboto_bold"
             android:textColor="@color/red"
             android:text="29.700.000 đ"
             android:layout_below="@+id/totalString"/>
 
         <Button
+            android:id="@+id/orderBtn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:textColor="@color/white"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@color/red"
+            android:gravity="center"
             android:paddingHorizontal="20dp"
             android:paddingVertical="0dp"
+            android:text="Đặt Hàng"
             android:textAllCaps="false"
-            android:layout_alignParentEnd="true"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:text="Đặt Hàng"/>
+            android:textColor="@color/white" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
