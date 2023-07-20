@@ -4,175 +4,202 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/superLightGrey">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/primary">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/productDetailImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="130dp"
-            android:src="@drawable/anh1"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_user_account_24">
-
-        </ImageView>
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:text="Họ và tên"
-                style="@style/textBase"/>
-            <EditText
-                android:layout_marginTop="5dp"
-                android:text="Trần Đức Minh"
-                style="@style/textBase"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_user_account_24">
-
-        </ImageView>
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:text="Giới tính"
-                style="@style/textBase"/>
-            <Spinner
-                android:layout_marginTop="5dp"
-                android:text="Trần Đức Minh"
-                style="@style/textBase">
-            </Spinner>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_edit_location_24">
-
-        </ImageView>
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:text="Địa chỉ"
-                style="@style/textBase"/>
-            <EditText
-                android:layout_marginTop="5dp"
-                android:text="Số 1 ngõ 372"
-                style="@style/textBase"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_calender_month_24">
-
-        </ImageView>
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:text="Ngày sinh"
-                style="@style/textBase"/>
-            <DatePicker
-                android:layout_marginTop="5dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:datePickerMode="spinner"
-                style="@style/textBase"/>
-        </LinearLayout>
+                android:layout_height="200dp"
+                android:background="@color/primary">
 
-    </LinearLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/avatarImage"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="130dp"
+                    android:src="@drawable/anh1"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_phone_24">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_user_account_24">
 
-        </ImageView>
-        <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:text="Số điện thoại"
-                style="@style/textBase"/>
-            <EditText
-                android:inputType="phone"
-                android:layout_marginTop="5dp"
-                android:text="0352243473"
-                style="@style/textBase"/>
-        </LinearLayout>
+                </ImageView>
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Họ và tên"
+                        style="@style/textBase"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/profileUserName"
+                        android:layout_marginTop="5dp"
+                        android:text="Trần Đức Minh"
+                        style="@style/textBase"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_user_account_24">
 
-    </LinearLayout>
+                </ImageView>
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Giới tính"
+                        style="@style/textBase"/>
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:id="@+id/spinnerGender"
+                        android:layout_marginTop="5dp"
+                        style="@style/textBase">
+                    </Spinner>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_edit_location_24">
+
+                </ImageView>
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Địa chỉ"
+                        style="@style/textBase"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/profileUserAddress"
+                        android:layout_marginTop="5dp"
+                        android:text="Số 1 ngõ 372"
+                        style="@style/textBase"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_calender_month_24">
+
+                </ImageView>
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Ngày sinh"
+                        style="@style/textBase"/>
+                    <DatePicker
+                        android:id="@+id/profileDob"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:datePickerMode="spinner"
+                        style="@style/textBase"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_phone_24">
+
+                </ImageView>
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:text="Số điện thoại"
+                        style="@style/textBase"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/profilePhone"
+                        android:inputType="phone"
+                        android:layout_marginTop="5dp"
+                        android:text="0352243473"
+                        style="@style/textBase"/>
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnUpdateProfile"
+                android:background="@color/primary"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:text="Update"
+                />
+            </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
 
 
 </LinearLayout>
