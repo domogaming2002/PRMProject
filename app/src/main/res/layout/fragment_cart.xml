@@ -72,7 +72,7 @@
             app:spanCount="1"
 
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/cart_product_item" />
+            tools:listitem="@layout/cart_item" />
 
 <!--        ORDER BUTTON-->
         <RelativeLayout
