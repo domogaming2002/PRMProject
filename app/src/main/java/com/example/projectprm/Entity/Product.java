@@ -22,6 +22,10 @@ public class Product {
     @Nullable
     public double salePrice;
 
+    @ColumnInfo(name = "oldPrice")
+    @Nullable
+    public double oldPrice;
+
     @ColumnInfo(name = "image")
     public String image;
 

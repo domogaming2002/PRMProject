@@ -4,6 +4,7 @@ public class ProductDTO { private int productId;
     private String name;
     private int unitInStock;
     private double salePrice;
+    private double oldPrice;
     private String image;
     private double rating;
     private String description;
@@ -14,6 +15,14 @@ public class ProductDTO { private int productId;
     private boolean isDelete  = false;
 
     public ProductDTO() {
+    }
+
+    public double getOldPrice() {
+        return oldPrice;
+    }
+
+    public void setOldPrice(double oldPrice) {
+        this.oldPrice = oldPrice;
     }
 
     public int getProductId() {
@@ -112,11 +121,12 @@ public class ProductDTO { private int productId;
         isDelete = delete;
     }
 
-    public ProductDTO(int productId, String name, int unitInStock, double salePrice, String image, double rating, String description, int categoryId, CategoryDTO category, int supplyId, SupplierDTO supply, boolean isDelete) {
+    public ProductDTO(int productId, String name, int unitInStock, double salePrice, double oldPrice, String image, double rating, String description, int categoryId, CategoryDTO category, int supplyId, SupplierDTO supply, boolean isDelete) {
         this.productId = productId;
         this.name = name;
         this.unitInStock = unitInStock;
         this.salePrice = salePrice;
+        this.oldPrice = oldPrice;
         this.image = image;
         this.rating = rating;
         this.description = description;
@@ -127,11 +137,12 @@ public class ProductDTO { private int productId;
         this.isDelete = isDelete;
     }
 
-    public ProductDTO(int productId, String name, int unitInStock, double salePrice, String image, double rating, String description, int categoryId, int supplyId, boolean isDelete) {
+    public ProductDTO(int productId, String name, int unitInStock, double salePrice, double oldPrice, String image, double rating, String description, int categoryId, int supplyId, boolean isDelete) {
         this.productId = productId;
         this.name = name;
         this.unitInStock = unitInStock;
         this.salePrice = salePrice;
+        this.oldPrice = oldPrice;
         this.image = image;
         this.rating = rating;
         this.description = description;
