@@ -14,18 +14,18 @@ public class OrderDetailDTO {
 
     private boolean isDelete ;
 
-    private OrderDTO orderDTO;
+    private ProductDTO productDTO;
 
     public OrderDetailDTO() {
     }
 
-    public OrderDetailDTO(int orderId, int productId, int quantity, double price, boolean isDelete, OrderDTO orderDTO) {
+    public OrderDetailDTO(int orderId, int productId, int quantity, double price, boolean isDelete, ProductDTO productDTO) {
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
         this.price = price;
         this.isDelete = isDelete;
-        this.orderDTO = orderDTO;
+        this.productDTO = productDTO;
     }
 
     public OrderDetailDTO(int orderId, int productId, int quantity, double price, boolean isDelete) {
@@ -76,11 +76,11 @@ public class OrderDetailDTO {
         isDelete = delete;
     }
 
-    public OrderDTO getOrderDTO() {
-        return orderDTO;
+    public ProductDTO getProductDTO() {
+        return productDTO;
     }
 
-    public void setOrderDTO(OrderDTO orderDTO) {
-        this.orderDTO = orderDTO;
+    public void setProductDTO(ProductDTO productDTO) {
+        this.productDTO = productDTO;
     }
 }

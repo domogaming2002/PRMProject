@@ -19,6 +19,7 @@
 
             <TextView
                 style="@style/textBase"
+                android:id="@+id/orderStatus"
                 android:text="Giao hàng thành công"
                 android:textColor="@color/darkgray"
                 android:textFontWeight="700" />
@@ -102,6 +103,7 @@
             </RelativeLayout>
         </LinearLayout>
         <Button
+            android:id="@+id/detailBtn"
             android:layout_width="130dp"
             android:layout_height="30dp"
             android:text="Xem Chi Tiết"
