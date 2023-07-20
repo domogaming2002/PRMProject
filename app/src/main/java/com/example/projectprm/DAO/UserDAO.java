@@ -8,11 +8,13 @@ import androidx.room.Update;
 
 import com.example.projectprm.Entity.User;
 
+import java.util.List;
+
 @Dao
 public interface UserDAO {
 
     @Query("Select * from User where isDelete = 0")
-    void getUserList();
+    List<User> getUserList();
 
     @Query("Select * from User where userId = :id and isDelete = 0")
     User getUserById(int id);

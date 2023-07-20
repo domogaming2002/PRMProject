@@ -4,10 +4,14 @@ import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import java.sql.Date;;
+import com.example.projectprm.Converter.Converter;
+
+import java.util.Date;
 
 @Entity
+@TypeConverters(Converter.class)
 public class User {
     @PrimaryKey(autoGenerate = true)
     public int userId;

@@ -17,7 +17,7 @@ public interface SupplierDAO {
     List<Supplier> getListSupplier();
 
     @Query("Select * from Supplier where supplyId = :id and isDelete = 0")
-    Supplier getSupplierById();
+    Supplier getSupplierById(int id);
 
     @Insert
     void insertSupplier(Supplier... suppliers);
