@@ -15,6 +15,7 @@ import com.example.projectprm.activity.ProductDetail;
 import com.example.projectprm.viewholder.ProductListViewHolder;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListViewHolder> {
@@ -41,11 +42,13 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListViewHold
         ProductDTO productDTO = productDTOList.get(position);
         holder.productName.setText(productDTO.getName());
         holder.productNewPrice.setText(String.valueOf(productDTO.getSalePrice()));
+        holder.productOldPrice.setText(String.valueOf(productDTO.getOldPrice()));
         Picasso.get().load(productDTO.getImage()).into(holder.productImage);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProductDetail.class);
+                intent.putExtra("productId",productDTO.getProductId());
                 context.startActivity(intent);
             }
         });

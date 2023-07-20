@@ -65,7 +65,8 @@ public class ListProductActivity extends AppCompatActivity {
             p.name = "Product" + i;
             p.unitInStock = 1 + i;
             p.salePrice = 1 + i;
-            p.image = "https://images.macrumors.com/t/9r84bU_ZTOTrUixxwhjHUFsAvD4=/800x0/smart/article-new/2017/09/iphonexdesign.jpg?lossy";
+            p.oldPrice = 11 - i;
+            p.image = "https://images2.thanhnien.vn/zoom/686_429/528068263637045248/2023/5/11/mau-tim-jennie-blackpink-5-1683770342157392395711-0-0-675-1080-crop-16837729036411840617379.jpg";
             p.rating = 5;
             p.description = "Product " + i + "is very good, bring me to love";
             p.categoryId = 1 +i;

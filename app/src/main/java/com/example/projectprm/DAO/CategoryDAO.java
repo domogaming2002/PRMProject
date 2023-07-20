@@ -18,6 +18,7 @@ public interface CategoryDAO {
     @Query("Select * from category where categoryId = :id and isDelete = 0")
     Category getCategoryById(int id);
 
+
     @Insert
     void insertCategory(Category... categories);
 
