@@ -38,7 +38,7 @@ public class OrderDetailItemAdapter extends RecyclerView.Adapter<OrderDetailItem
         CartItem cart = cartItems.get(position);
         holder.productName.setText(cart.getProduct().getName());
         holder.quantity.setText(String.valueOf(cart.getQuantity()));
-        holder.price.setText(String.valueOf(cart.getPrice()));
+        holder.price.setText(String.valueOf(cart.getPrice() / 1000) + ".000 đ");
         int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
         holder.image.setImageResource(drawableId);
     }

@@ -42,8 +42,8 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
         CartItem cart = cartItems.get(position);
         holder.productName.setText(cart.getProduct().getName());
         holder.quantity.setText(String.valueOf(cart.getQuantity()));
-        holder.oldPrice.setText(String.valueOf(cart.getProduct().getOldPrice()));
-        holder.salePrice.setText(String.valueOf(cart.getProduct().getSalePrice()));
+        holder.oldPrice.setText(getDisplayPrice(cart.getProduct().getOldPrice()));
+        holder.salePrice.setText(getDisplayPrice(cart.getProduct().getSalePrice()));
         holder.itemChooseCb.setChecked(cart.isChecked());
         int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
         holder.image.setImageResource(drawableId);
@@ -65,6 +65,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
 //                }
 //            }
 //        });
+    }
+
+    private String getDisplayPrice(double price){
+        return String.valueOf(price / 1000) + "00 đ";
     }
 
     @Override

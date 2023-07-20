@@ -24,8 +24,9 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     OrderDetailItemAdapter orderDetailItemAdapter;
     List<CartItem> cartItemList;
-
     CartItemRepository cartItemRepository;
+
+    //UI ELEMENT
     TextView orderAfterDiscount1;
     TextView tempOrderMoney;
     TextView shipFeeTxt;
@@ -45,11 +46,12 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
         setUpCartRecycleView();
+        setUIViewBinding();
         setPriceLayout();
     }
 
     private void setUpCartRecycleView(){
-        getCartList();
+        getBuyList();
 
         //Set up adapter
         orderDetailItemAdapter = new OrderDetailItemAdapter(cartItemList, ProcessCheckoutActivity.this);
@@ -61,26 +63,12 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    private void setPriceLayout(){
-        int initTotal = countTotalMoney();
+    private void setUIViewBinding(){
         tempOrderMoney = findViewById(R.id.tempOrderMoney);
-        tempOrderMoney.setText(String.valueOf(initTotal));
-
-        int shipFee = OrderUtil.countFeeShip();
         shipFeeTxt = findViewById(R.id.shipFee);
-        shipFeeTxt.setText(String.valueOf(shipFee));
-
-        int shipFeeDiscount = OrderUtil.countFeeShipDiscount();
         shipDiscount = findViewById(R.id.shipDiscount);
-        shipDiscount.setText(String.valueOf(shipFeeDiscount));
-
-
-        int totalOrder = initTotal + shipFee - shipFeeDiscount;
         orderAfterDiscount1 = findViewById(R.id.orderAfterDiscount);
         orderAfterDiscount2 = findViewById(R.id.orderAfterDiscount2);
-        orderAfterDiscount1.setText(String.valueOf(totalOrder));
-        orderAfterDiscount2.setText(String.valueOf(totalOrder));
-
         orderBtn = findViewById(R.id.orderBtn);
         orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +86,21 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
         });
     }
 
+    private void setPriceLayout(){
+        int initTotal = countTotalMoney();
+        tempOrderMoney.setText(String.valueOf(initTotal/1000) + ".000 đ");
+
+        int shipFee = OrderUtil.countFeeShip();
+        shipFeeTxt.setText(String.valueOf(shipFee / 1000) + ".000 đ");
+
+        int shipFeeDiscount = OrderUtil.countFeeShipDiscount();
+        shipDiscount.setText(String.valueOf(shipFeeDiscount / 1000) + ".000 đ");
+
+        int totalOrder = initTotal + shipFee - shipFeeDiscount;
+        orderAfterDiscount1.setText(String.valueOf(totalOrder / 1000) + ".000 đ");
+        orderAfterDiscount2.setText(String.valueOf(totalOrder / 1000) + ".000 đ");
+    }
+
     private int countTotalMoney() {
         int total = 0;
         for (CartItem item : cartItemList) {
@@ -109,11 +112,11 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
     }
 
 
-    private void getCartList(){
+    private void getBuyList(){
         cartItemList = cartItemRepository.getCartFromMemory(ProcessCheckoutActivity.this);
-        for (CartItem cart: cartItemList) {
-            if(!cart.isChecked()){
-                cartItemList.remove(cart);
+        for (int i = 0; i < cartItemList.size(); i++) {
+            if(!cartItemList.get(i).isChecked()) {
+                cartItemList.remove(i);
             }
         }
     }

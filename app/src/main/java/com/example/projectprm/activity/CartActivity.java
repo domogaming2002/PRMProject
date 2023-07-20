@@ -39,6 +39,23 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_cart);
+
+        //instantiate
+        cartItemRepository = new CartItemRepository();
+//        cartItemRepository.setCartToMemory(CartActivity.this, cartItemRepository.getTestCartList());
+
+        //hind action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+        //PRODUCT ADAPTER
+        setUpCartRecycleView();
+        layoutViewBinding();
+        setTotalMoneyTxt();
+    }
+
+    private void layoutViewBinding(){
         clickToBuy = findViewById(R.id.clickToBuy);
         checkedAllItemCb = findViewById(R.id.checkedAllItem);
         tempOrderMoney = findViewById(R.id.tempCountMoney);
@@ -58,23 +75,9 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
                 }
                 cartItemAdapter.notifyDataSetChanged();
                 cartItemRepository.setCartToMemory(CartActivity.this, cartItemList);
-                countTotalMoney();
+                setTotalMoneyTxt();
             }
         });
-
-        cartItemRepository = new CartItemRepository();
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-
-//        cartItemRepository.setCartToMemory(CartActivity.this, cartItemRepository.getTestCartList());
-
-        //PRODUCT ADAPTER
-        setUpCartRecycleView();
-
-        //
-        countTotalMoney();
     }
 
     private void setUpCartRecycleView() {
@@ -91,14 +94,14 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
         recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    private void countTotalMoney() {
+    private void setTotalMoneyTxt() {
         int total = 0;
         for (CartItem item : cartItemList) {
             if (item.isChecked()) {
                 total += item.getProduct().getSalePrice();
             }
         }
-        tempOrderMoney.setText(String.valueOf(total));
+        tempOrderMoney.setText(String.valueOf(total / 1000) + ".000 đ");
     }
 
     private void getCartList() {
@@ -115,7 +118,7 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
         }
         cartItemAdapter.notifyDataSetChanged();
         cartItemRepository.setCartToMemory(CartActivity.this, cartItemList);
-        countTotalMoney();
+        setTotalMoneyTxt();
     }
 
     @Override
@@ -129,14 +132,14 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
         cartItemAdapter.notifyDataSetChanged();
         //Lưu vào bộ nhớ
         cartItemRepository.setCartToMemory(CartActivity.this, cartItemList);
-        countTotalMoney();
+        setTotalMoneyTxt();
     }
 
     @Override
     public void onCheckToBuyChange(int position, boolean isCheck) {
         cartItemList.get(position).setChecked(isCheck);
-        countTotalMoney();
         cartItemRepository.setCartToMemory(CartActivity.this, cartItemList);
+        setTotalMoneyTxt();
     }
 
     @Override
@@ -144,13 +147,6 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
         getMenuInflater().inflate(R.menu.menu_context, menu);
         return true;
     }
-
-//    @Override
-//    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-//        super.onCreateContextMenu(menu, v, menuInfo);
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu_context, menu);
-//    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
