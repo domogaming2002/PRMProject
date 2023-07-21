@@ -171,6 +171,12 @@ public class ProductDetail extends AppCompatActivity {
             return true;
         }
 
+        if (R.id.action_Product == item.getItemId()) {
+            Intent intent = new Intent(ProductDetail.this, ListProductActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
         return false;
 
     }
