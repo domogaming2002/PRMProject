@@ -35,5 +35,7 @@ public interface ProductDAO {
     @Delete
     void deleteProduct(Product product);
 
+    @Query("Update Product SET isDelete = 1 Where productId = :sId")
+    void deleteProductById(int sId);
 
 }

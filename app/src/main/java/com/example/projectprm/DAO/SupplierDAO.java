@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+
 import com.example.projectprm.Entity.Supplier;
 
 import java.util.List;
@@ -28,6 +29,13 @@ public interface SupplierDAO {
     @Delete
     void deleteSupplier(Supplier supplier);
 
+    @Query("Select * from Supplier where name like  '%' || :pName || '%' and isDelete = 0")
+    List<Supplier> findSupplierByName(String pName);
 
+    @Query("Update Supplier SET isDelete = 1 Where supplyId = :sId")
+    void deleteSupplierById(int sId);
+
+    @Query("Select supplyId from Supplier where name = :cName")
+    int getSupplyIdByName(String cName);
 
 }

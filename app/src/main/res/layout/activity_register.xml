@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".activity.Login">
+    tools:context=".activity.Register">
 
     <TextView
         android:id="@+id/signuptitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:text="Log in"
+        android:text="Register"
         android:textColor="@color/white"
         android:textSize="35dp"
         android:textStyle="bold" />
@@ -39,13 +39,45 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white" />
 
+    <EditText
+        android:id="@+id/fullNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailTxt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="20dp"
+        android:hint="Full name"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
+    <!--<EditText
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/firstName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#30ffffff"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="20dp"
+        android:hint="Last name"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />-->
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/passwordTxt"
-        android:layout_below="@id/emailTxt"
+        android:layout_below="@id/fullNameTxt"
         android:background="#30ffffff"
         android:hint="Password"
         android:textColorHint="@color/white"
@@ -55,28 +87,29 @@
         android:drawableLeft="@drawable/ic_baseline_info_24"
         android:drawablePadding="20dp"
         android:inputType="textPassword"/>
-
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rePasswordTxt"
+        android:layout_below="@id/passwordTxt"
+        android:background="#30ffffff"
+        android:hint="Re-Password"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"
+        android:inputType="textPassword"/>
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/signUpBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/passwordTxt"
+        android:layout_below="@id/rePasswordTxt"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:backgroundTint="@color/design_default_color_secondary"
-        android:text="LOGIN"
-        android:textSize="25dp" />
-    <Button
-        android:id="@+id/registerBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:backgroundTint="@color/design_default_color_secondary"
@@ -88,7 +121,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/info"
         android:layout_above="@id/socialicons"
-        android:text="or sign in with"
+        android:text="or sign up with"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
