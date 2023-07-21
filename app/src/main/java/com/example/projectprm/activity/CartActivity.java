@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,7 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
     CartItemRepository cartItemRepository;
     Button clickToBuy;
     TextView tempOrderMoney;
+    ImageView backToHomePage;
     CheckBox checkedAllItemCb;
 
     @Override
@@ -59,6 +61,13 @@ public class CartActivity extends AppCompatActivity implements OnCartItemClickLi
         clickToBuy = findViewById(R.id.clickToBuy);
         checkedAllItemCb = findViewById(R.id.checkedAllItem);
         tempOrderMoney = findViewById(R.id.tempCountMoney);
+        backToHomePage = findViewById(R.id.backToHomePage);
+        backToHomePage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         clickToBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -13,11 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectprm.DTO.CartItem;
+import com.example.projectprm.Entity.Order;
+import com.example.projectprm.Entity.User;
 import com.example.projectprm.R;
 import com.example.projectprm.Repository.CartItemRepository;
+import com.example.projectprm.Repository.OrderRepository;
+import com.example.projectprm.Repository.UserRepository;
 import com.example.projectprm.adapter.OrderDetailItemAdapter;
 import com.example.projectprm.util.OrderUtil;
+import com.example.projectprm.util.UserUtil;
 
+import java.util.Date;
 import java.util.List;
 
 public class ProcessCheckoutActivity extends AppCompatActivity {
@@ -25,12 +31,17 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
     OrderDetailItemAdapter orderDetailItemAdapter;
     List<CartItem> cartItemList;
     CartItemRepository cartItemRepository;
+    OrderRepository orderRepository;
+    User loggedInUser;
 
     //UI ELEMENT
     TextView orderAfterDiscount1;
     TextView tempOrderMoney;
     TextView shipFeeTxt;
     TextView shipDiscount;
+    TextView customerNameTxt;
+    TextView customerPhoneTxt;
+    TextView customerAddressTxt;
     TextView orderAfterDiscount2;
     Button orderBtn;
     ImageView icChangeAddress;
@@ -40,7 +51,14 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirm_order);
+        loggedInUser = UserUtil.getLoggedInUser(getApplicationContext(), new UserRepository(getApplicationContext()));
+        if(loggedInUser == null){
+            Intent intent = new Intent(ProcessCheckoutActivity.this, Login.class);
+            startActivity(intent);
+        }
+
         cartItemRepository = new CartItemRepository();
+        orderRepository = new OrderRepository(getApplicationContext());
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -69,10 +87,18 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
         shipDiscount = findViewById(R.id.shipDiscount);
         orderAfterDiscount1 = findViewById(R.id.orderAfterDiscount);
         orderAfterDiscount2 = findViewById(R.id.orderAfterDiscount2);
+        customerNameTxt = findViewById(R.id.customerNameTxt);
+        customerNameTxt.setText(loggedInUser.firstname);
+        customerPhoneTxt = findViewById(R.id.customerPhoneTxt);
+        customerPhoneTxt.setText(loggedInUser.phoneNumber);
+        customerAddressTxt = findViewById(R.id.customerAddressTxt);
+        customerAddressTxt.setText(loggedInUser.address);
+
         orderBtn = findViewById(R.id.orderBtn);
         orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addOrder();
                 Toast.makeText(ProcessCheckoutActivity.this, "Chúc mừng bạn đặt hàng thành công! Yay yay", Toast.LENGTH_SHORT).show();
             }
         });
@@ -84,6 +110,26 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void addOrder() {
+        Order orderToAdd = new Order();
+        orderToAdd.orderCode = OrderUtil.generateOrderCode();
+        orderToAdd.orderDate =  new Date();
+        orderToAdd.fullname = loggedInUser.firstname;
+        orderToAdd.phoneNumber = loggedInUser.phoneNumber;
+        orderToAdd.address = loggedInUser.address;
+        orderToAdd.status = 1;
+        orderToAdd.userId = loggedInUser.userId;
+
+        orderRepository.addToOrder(orderToAdd, cartItemList);
+
+        //go to order finish
+        Intent intent = new Intent(ProcessCheckoutActivity.this, OrderFinishActivity.class);
+        intent.putExtra("order", OrderUtil.orderToString(orderRepository.getRecentlyAddedOrder()));
+        intent.putExtra("orderList", OrderUtil.orderListToString(cartItemList));
+        startActivity(intent);
+        finish();
     }
 
     private void setPriceLayout(){

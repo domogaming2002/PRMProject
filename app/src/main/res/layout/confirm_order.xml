@@ -6,13 +6,38 @@
     android:layout_height="match_parent"
     android:background="@color/lightest_gray">
 
+    <RelativeLayout
+        android:id="@+id/headerPart"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/primary">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:contentDescription="back arrow"
+            android:src="@drawable/ic_arrow_back_24" />
+
+        <TextView
+            style="@style/textBase"
+            android:layout_centerInParent="true"
+            android:text="Đơn Hàng Của Tôi"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/addressPart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:padding="10dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/headerPart">
 
         <ImageView
             android:id="@+id/icLocation"
@@ -276,7 +301,7 @@
         android:paddingLeft="10dp"
         android:layout_height="60dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countMoneyPart">
+        app:layout_constraintBottom_toBottomOf="parent">
         <TextView
             style="@style/textBase"
             android:id="@id/totalString"
