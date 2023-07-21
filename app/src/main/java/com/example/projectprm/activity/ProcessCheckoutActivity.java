@@ -20,6 +20,7 @@ import com.example.projectprm.Repository.CartItemRepository;
 import com.example.projectprm.Repository.OrderRepository;
 import com.example.projectprm.Repository.UserRepository;
 import com.example.projectprm.adapter.OrderDetailItemAdapter;
+import com.example.projectprm.util.CartManager;
 import com.example.projectprm.util.OrderUtil;
 import com.example.projectprm.util.UserUtil;
 
@@ -123,6 +124,7 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
         orderToAdd.userId = loggedInUser.userId;
 
         orderRepository.addToOrder(orderToAdd, cartItemList);
+        CartManager.updateCart(getApplicationContext(), cartItemList);
 
         //go to order finish
         Intent intent = new Intent(ProcessCheckoutActivity.this, OrderFinishActivity.class);
