@@ -13,11 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.projectprm.DTO.CartItem;
+import com.example.projectprm.Entity.Order;
 import com.example.projectprm.R;
 import com.example.projectprm.Repository.CartItemRepository;
+import com.example.projectprm.Repository.OrderRepository;
 import com.example.projectprm.adapter.OrderDetailItemAdapter;
 import com.example.projectprm.util.OrderUtil;
 
+import java.util.Date;
 import java.util.List;
 
 public class ProcessCheckoutActivity extends AppCompatActivity {
@@ -25,6 +28,7 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
     OrderDetailItemAdapter orderDetailItemAdapter;
     List<CartItem> cartItemList;
     CartItemRepository cartItemRepository;
+    OrderRepository orderRepository;
 
     //UI ELEMENT
     TextView orderAfterDiscount1;
@@ -41,6 +45,7 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirm_order);
         cartItemRepository = new CartItemRepository();
+        orderRepository = new OrderRepository(getApplicationContext());
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -73,6 +78,7 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
         orderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                addOrder();
                 Toast.makeText(ProcessCheckoutActivity.this, "Chúc mừng bạn đặt hàng thành công! Yay yay", Toast.LENGTH_SHORT).show();
             }
         });
@@ -84,6 +90,26 @@ public class ProcessCheckoutActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void addOrder() {
+        Order orderToAdd = new Order();
+        orderToAdd.orderCode = OrderUtil.generateOrderCode();
+        orderToAdd.orderDate =  new Date();
+//        orderToAdd.fullname
+//        orderToAdd.phoneNumber
+//        orderToAdd.address
+        orderToAdd.status = 1;
+//        orderToAdd.userId =
+
+        orderRepository.addToOrder(orderToAdd, cartItemList);
+        orderToAdd = orderRepository.getRecentlyAddedOrder();
+
+        //go to order finish
+        Intent intent = new Intent(ProcessCheckoutActivity.this, OrderFinishActivity.class);
+        intent.putExtra("order", OrderUtil.orderToString(orderToAdd));
+        intent.putExtra("orderList", OrderUtil.orderListToString(cartItemList));
+        startActivity(intent);
     }
 
     private void setPriceLayout(){

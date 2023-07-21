@@ -19,6 +19,7 @@
             android:background="@color/primary">
 
             <ImageView
+                android:id="@+id/userDetailBackBtn"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_centerVertical="true"
@@ -64,7 +65,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/customerPhoneTxt"
+                android:id="@+id/orderCodeTxt"
                 style="@style/h4Text"
                 android:fontFamily="@font/inter_light"
                 android:textSize="13dp"
@@ -127,7 +128,7 @@
                 android:id="@+id/icDelivery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_order_code_24"
+                android:src="@drawable/ic_delivery_24"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -233,10 +234,11 @@
                     android:id="@+id/icSupplier"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_location_24"/>
+                    android:src="@drawable/ic_store_mall_24"/>
 
                 <TextView
                     style="@style/h4Text"
+                    android:id="@+id/supplierNameTxt"
                     android:layout_marginStart="5dp"
                     android:text="Tiki Trading"
                     android:textSize="13dp"
@@ -258,15 +260,135 @@
 
 <!--            List đơn hàng-->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCart"
+                android:id="@+id/rvOrderDetailList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                tools:itemCount="2"
+                tools:itemCount="0"
                 tools:listitem="@layout/order_detail_item" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/orderPaymentMethodPart"
+            style="@style/layoutBase"
+            android:background="@color/white"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <LinearLayout
+                style="@style/layoutBase">
+                <ImageView
+                    android:id="@+id/icPaymentMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_payment_24"/>
+
+                <TextView
+                    style="@style/h4Text"
+                    android:layout_marginStart="5dp"
+                    android:text="Hình thức thanh toán"
+                    android:textSize="13dp"
+                    android:fontFamily="@font/inter_light"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/icUserLocation"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+
+
+
+            <TextView
+                style="@style/textBase"
+                android:layout_width="370dp"
+                android:layout_marginStart="28dp"
+                android:text="Thanh toán thành công bằng Banking Online"
+                android:textColor="@color/darkgray"
+                android:textSize="13sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/countMoneyPart"
+            style="@style/layoutBase"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:padding="13dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/paymentPart">
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                style="@style/layoutBase">
+                <TextView
+                    style="@style/smallerText"
+                    android:text="Tạm tính" />
+                <TextView
+                    style="@style/smallerText"
+                    android:id="@+id/tempOrderMoney"
+                    android:text="29.900 đ"
+                    android:textStyle="bold"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/lightest_gray" />
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                style="@style/layoutBase">
+                <TextView
+                    style="@style/smallerText"
+                    android:text="Phí vận chuyển" />
+                <TextView
+                    style="@style/smallerText"
+                    android:text="24.000 đ"
+                    android:textStyle="bold"
+                    android:id="@+id/shipFee"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/lightest_gray" />
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                style="@style/layoutBase">
+                <TextView
+                    style="@style/smallerText"
+                    android:text="Khuyến mãi vận chuyển" />
+
+                <TextView
+                    android:id="@+id/shipDiscount"
+                    style="@style/smallerText"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:text="-24.000 đ"
+                    android:textColor="@color/green" />
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/lightest_gray" />
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                style="@style/layoutBase">
+                <TextView
+                    style="@style/smallerText"
+                    android:textStyle="bold"
+                    android:text="Thành tiền" />
+                <TextView
+                    style="@style/h3Text"
+                    android:fontFamily="@font/inter_bold"
+                    android:id="@+id/orderAfterDiscount"
+                    android:text="29.700 đ"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

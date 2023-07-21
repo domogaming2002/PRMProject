@@ -1,6 +1,7 @@
 package com.example.projectprm.DTO;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderDTO {
     private int orderId;
@@ -25,10 +26,18 @@ public class OrderDTO {
 
     private boolean isDelete;
 
-    private ProductDTO productDTO;
+    private List<OrderDetailDTO> orderItemList;
 
     public OrderDTO() {
 
+    }
+
+    public List<OrderDetailDTO> getOrderItemList() {
+        return orderItemList;
+    }
+
+    public void setOrderItemList(List<OrderDetailDTO> orderItemList) {
+        this.orderItemList = orderItemList;
     }
 
     public OrderDTO(int orderId, int userId, String orderCode, Date orderDate, Date shippedDate, String fullname, String email, String address, String phoneNumber, int status, boolean isDelete, ProductDTO productDTO) {
@@ -43,7 +52,6 @@ public class OrderDTO {
         this.phoneNumber = phoneNumber;
         this.status = status;
         this.isDelete = isDelete;
-        this.productDTO = productDTO;
     }
 
     public OrderDTO(int orderId, int userId, String orderCode, Date orderDate, Date shippedDate, String fullname, String email, String address, String phoneNumber, int status, boolean isDelete) {
@@ -146,13 +154,5 @@ public class OrderDTO {
 
     public void setDelete(boolean delete) {
         isDelete = delete;
-    }
-
-    public ProductDTO getProductDTO() {
-        return productDTO;
-    }
-
-    public void setProductDTO(ProductDTO productDTO) {
-        this.productDTO = productDTO;
     }
 }

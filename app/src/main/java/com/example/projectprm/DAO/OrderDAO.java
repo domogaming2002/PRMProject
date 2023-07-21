@@ -35,6 +35,7 @@ public interface OrderDAO {
 
     @Delete
     void deleteOrder(Order order);
-
+    @Query("SELECT * FROM `Order` ORDER BY orderId DESC LIMIT 1")
+    Order getRecentlyAddedOrder();
 
 }

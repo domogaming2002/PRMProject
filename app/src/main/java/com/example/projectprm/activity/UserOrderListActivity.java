@@ -18,6 +18,7 @@ import com.example.projectprm.Repository.OrderRepository;
 import com.example.projectprm.adapter.CartItemAdapter;
 import com.example.projectprm.adapter.OnOrderItemClickListener;
 import com.example.projectprm.adapter.OrderItemAdapter;
+import com.example.projectprm.util.OrderUtil;
 
 import java.util.List;
 
@@ -90,7 +91,9 @@ public class UserOrderListActivity extends AppCompatActivity implements OnOrderI
 
     @Override
     public void onDetailBtnClick(int position) {
-
+        Intent intent = new Intent(UserOrderListActivity.this, OrderFinishActivity.class);
+        intent.putExtra("orderId", orderRecycleList.get(position).orderId);
+        startActivity(intent);
     }
 
     @Override
