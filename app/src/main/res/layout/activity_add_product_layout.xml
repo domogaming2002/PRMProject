@@ -20,8 +20,8 @@
 
     <EditText
         android:id="@+id/edt_addname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="278dp"
+        android:layout_height="38dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="name"
@@ -33,8 +33,8 @@
 
     <EditText
         android:id="@+id/edt_adddescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="278dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="description"
@@ -46,34 +46,36 @@
 
     <EditText
         android:id="@+id/edt_addOldPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="122dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="old price"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.231"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_adddescription"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/edt_addSalePrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="121dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="sale price"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.772"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_addOldPrice"
+        app:layout_constraintTop_toBottomOf="@+id/edt_adddescription"
         tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/edt_addUnitsInStock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="276dp"
+        android:layout_height="42dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="units in stock"
@@ -84,12 +86,10 @@
         tools:ignore="TouchTargetSizeCheck" />
 
 
-
-
     <Spinner
         android:id="@+id/spinner_category"
-        android:layout_width="241dp"
-        android:layout_height="32dp"
+        android:layout_width="279dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,13 +98,26 @@
 
     <Spinner
         android:id="@+id/spinner_supplier"
-        android:layout_width="241dp"
-        android:layout_height="32dp"
+        android:layout_width="280dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_category"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <EditText
+        android:id="@+id/edt_addImage"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="image"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_supplier"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btn_addProduct"

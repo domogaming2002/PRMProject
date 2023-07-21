@@ -38,10 +38,12 @@ public class List_category_admin extends AppCompatActivity implements CategoryFr
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_category);
-        Toolbar toolbar = findViewById(R.id.toolbarcategory);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbarcategory);
+
+//        setSupportActionBar(toolbar);
 
         initRoomDatabase();
         fab = findViewById(R.id.fab_Category);
@@ -91,8 +93,7 @@ public class List_category_admin extends AppCompatActivity implements CategoryFr
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
     }
 

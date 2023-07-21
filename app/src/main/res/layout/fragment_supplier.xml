@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragments.SupplierFragment">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarsupplier"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:title="My Toolbar"
-        android:titleTextColor="@android:color/white"
-        android:elevation="4dp" />
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/toolbarsupplier"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:title="My Toolbar"-->
+<!--        android:titleTextColor="@android:color/white"-->
+<!--        android:elevation="4dp" />-->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

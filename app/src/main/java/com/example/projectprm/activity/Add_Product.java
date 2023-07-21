@@ -54,6 +54,7 @@ public class Add_Product extends AppCompatActivity {
         EditText oldPriceTxt = findViewById(R.id.edt_addOldPrice);
         EditText salePriceTxt = findViewById(R.id.edt_addSalePrice);
         EditText unitsInStockTxt = findViewById(R.id.edt_addUnitsInStock);
+        EditText imageTxt = findViewById(R.id.edt_addImage);
         spinner_supplier = findViewById(R.id.spinner_supplier);
         spinner_category = findViewById(R.id.spinner_category);
         initRoomDatabase();
@@ -118,7 +119,7 @@ public class Add_Product extends AppCompatActivity {
                 product.oldPrice = Double.parseDouble(oldPriceTxt.getText().toString());
                 product.salePrice = Double.parseDouble(salePriceTxt.getText().toString());
                 product.unitInStock = Integer.parseInt(unitsInStockTxt.getText().toString());
-                product.image = "Walle";
+                product.image = imageTxt.getText().toString();
                 productDAO.insertAll(product);
                 Intent intent = new Intent(Add_Product.this, List_product_admin.class);
                 startActivity(intent);

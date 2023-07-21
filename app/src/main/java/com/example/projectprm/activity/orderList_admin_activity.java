@@ -48,8 +48,8 @@ public class orderList_admin_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_list_admin);
-        Toolbar toolbar = findViewById(R.id.toolbarorder);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbarorder);
+//        setSupportActionBar(toolbar);
 
         orderDTOS = new ArrayList<>();
         inItRoomDatabase();
@@ -99,8 +99,7 @@ public class orderList_admin_activity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
     }
 

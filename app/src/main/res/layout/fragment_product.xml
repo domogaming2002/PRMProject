@@ -10,14 +10,14 @@
         android:layout_height="match_parent"
         android:background="#EDEDEF"
         android:orientation="vertical">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarproduct"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:title="My Toolbar"
-            android:titleTextColor="@android:color/white"
-            android:elevation="4dp" />
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbarproduct"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="?attr/colorPrimary"-->
+<!--            android:title="My Toolbar"-->
+<!--            android:titleTextColor="@android:color/white"-->
+<!--            android:elevation="4dp" />-->
 
         <!--        header-->
         <RelativeLayout

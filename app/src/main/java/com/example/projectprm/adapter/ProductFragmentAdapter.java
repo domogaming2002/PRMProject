@@ -20,6 +20,7 @@ import com.example.projectprm.Entity.Product;
 import com.example.projectprm.R;
 import com.example.projectprm.activity.Update_Category;
 import com.example.projectprm.activity.Update_Product;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -68,10 +69,11 @@ public class ProductFragmentAdapter extends RecyclerView.Adapter<ProductFragment
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         final Product p= products.get(position);
-        String Image = p.image;
+        //String Image = p.image;
         //Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
         /*int restId = context.getResources().getIdentifier(Image, "drawable", context.getOpPackageName());
         holder.img.setImageResource(restId);*/
+        Picasso.get().load(p.image).into(holder.img);
         holder.tv_name.setText(p.name);
         holder.tv_description.setText(p.description);
         holder.tv_price.setText(String.valueOf(p.salePrice));
@@ -103,7 +105,7 @@ public class ProductFragmentAdapter extends RecyclerView.Adapter<ProductFragment
 
     public class ProductHolder extends  RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView img;
-        TextView tv_name, tv_description, tv_price, tv_unitsInStock;
+        TextView tv_name, tv_description, tv_price, tv_unitsInStock, tv_image;
         CardView layoutItem;
         Button updateBtn, deleteBtn;
 
@@ -114,6 +116,7 @@ public class ProductFragmentAdapter extends RecyclerView.Adapter<ProductFragment
             tv_description = itemView.findViewById(R.id.tv_description);
             tv_price = itemView.findViewById(R.id.tv_price);
             tv_unitsInStock = itemView.findViewById(R.id.tv_unitsInStock);
+            tv_image = itemView.findViewById(R.id.edt_addImage);
             layoutItem = itemView.findViewById(R.id.layout_itemRV);
             updateBtn = itemView.findViewById(R.id.updateBtn);
             deleteBtn = itemView.findViewById(R.id.deleteBtn);

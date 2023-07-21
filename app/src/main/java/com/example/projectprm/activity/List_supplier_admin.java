@@ -42,8 +42,8 @@ public class List_supplier_admin extends AppCompatActivity implements SupplierFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_supplier);
-        Toolbar toolbar = findViewById(R.id.toolbarsupplier);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbarsupplier);
+//        setSupportActionBar(toolbar);
 
         initRoomDatabase();
         fab = findViewById(R.id.fab_Supplier);
@@ -93,8 +93,7 @@ public class List_supplier_admin extends AppCompatActivity implements SupplierFr
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.navigation_menu, menu);
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
     }
 
