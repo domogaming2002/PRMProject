@@ -17,6 +17,7 @@
             android:layout_height="50dp"
             android:background="@color/primary">
             <ImageView
+                android:id="@+id/backToHomePage"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:contentDescription="back arrow"

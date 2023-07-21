@@ -55,6 +55,7 @@ public class UserOrderDetailActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+        getOrderDetailFromIntent();
         setUpCartRecycleView();
         setUIViewBinding();
     }

@@ -21,12 +21,14 @@ import android.widget.Spinner;
 import com.example.projectprm.Converter.Converter;
 import com.example.projectprm.DAO.CategoryDAO;
 import com.example.projectprm.DAO.ProductDAO;
+import com.example.projectprm.DAO.SupplierDAO;
 import com.example.projectprm.DAO.UserDAO;
 import com.example.projectprm.DTO.AppDatabase;
 import com.example.projectprm.DTO.CategoryDTO;
 import com.example.projectprm.DTO.ProductDTO;
 import com.example.projectprm.Entity.Category;
 import com.example.projectprm.Entity.Product;
+import com.example.projectprm.Entity.Supplier;
 import com.example.projectprm.Entity.User;
 import com.example.projectprm.R;
 import com.example.projectprm.adapter.ProductListAdapter;
@@ -42,6 +44,7 @@ public class ListProductActivity extends AppCompatActivity {
     ArrayList<CategoryDTO> categoryDTOS;
     AppDatabase db;
     ProductDAO productDAO;
+    SupplierDAO supplierDAO;
     UserDAO userDAO;
     CategoryDAO categoryDAO;
     RecyclerView recyclerView;
@@ -55,7 +58,7 @@ public class ListProductActivity extends AppCompatActivity {
         productDAO = db.productDAO();
         userDAO = db.userDAO();
         categoryDAO = db.categoryDAO();
-
+        supplierDAO = db.supplierDAO();
     }
 
     @Override
@@ -143,6 +146,18 @@ public class ListProductActivity extends AppCompatActivity {
             }
         });
         //
+
+
+
+        // public CategoryDTO(int categoryId, String name, int parentId, String image, boolean isDelete) {
+        Supplier s = new Supplier();
+        for (int i = 0; i < 10; i++) {
+            s.name = "Supplier " + i;
+            s.isDelete = false;
+            supplierDAO.insertSupplier(s);
+        }
+
+
     }
 
     @Override
@@ -173,6 +188,12 @@ public class ListProductActivity extends AppCompatActivity {
 
         if(R.id.action_profile == item.getItemId()){
             Intent intent = new Intent(ListProductActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if(R.id.action_order == item.getItemId()){
+            Intent intent = new Intent(ListProductActivity.this, UserOrderListActivity.class);
             startActivity(intent);
             return true;
         }
@@ -242,4 +263,6 @@ public class ListProductActivity extends AppCompatActivity {
         u.isDelete = false;
         userDAO.insertUser(u);
     }
+
+
 }

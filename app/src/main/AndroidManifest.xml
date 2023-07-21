@@ -19,8 +19,13 @@
             android:name=".activity.OrderFinishActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.UserOrderDetailActivity"
+            android:name=".activity.UserOrderListActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.UserOrderDetailActivity"
+            android:exported="true" >
+
+        </activity>
 
         <activity
             android:name=".activity.ProcessCheckoutActivity"

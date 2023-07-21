@@ -34,7 +34,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
     public OrderItemAdapter.OrderItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View cartView = inflater.inflate(R.layout.cart_item, parent, false);
+        View cartView = inflater.inflate(R.layout.order_item, parent, false);
         OrderItemAdapter.OrderItemViewHolder viewHolder = new OrderItemAdapter.OrderItemViewHolder(cartView, listener);
         return viewHolder;
     }

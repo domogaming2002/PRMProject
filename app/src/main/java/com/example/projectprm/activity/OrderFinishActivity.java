@@ -56,6 +56,7 @@ public class OrderFinishActivity extends AppCompatActivity {
                 Intent intent = new Intent(OrderFinishActivity.this, UserOrderDetailActivity.class);
                 intent.putExtra("orderId", successOrder.orderId);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -68,6 +69,7 @@ public class OrderFinishActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OrderFinishActivity.this, ListProductActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

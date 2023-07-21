@@ -31,6 +31,7 @@ public class OrderRepository {
     public OrderRepository(Context context) {
         this.context = context;
         initRoomDatabase();
+        orderDetailRepository = new OrderDetailRepository(context);
     }
 
     private void initRoomDatabase() {
