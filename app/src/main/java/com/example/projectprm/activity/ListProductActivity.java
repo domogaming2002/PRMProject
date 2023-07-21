@@ -5,7 +5,11 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +30,7 @@ import com.example.projectprm.Entity.Product;
 import com.example.projectprm.Entity.User;
 import com.example.projectprm.R;
 import com.example.projectprm.adapter.ProductListAdapter;
+import com.example.projectprm.util.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -69,7 +74,7 @@ public class ListProductActivity extends AppCompatActivity {
         }
 
         recyclerView = findViewById(R.id.productListRecycleView);
-        productListAdapter = new ProductListAdapter(productDTOS, ListProductActivity.this, 1);
+        productListAdapter = new ProductListAdapter(productDTOS, ListProductActivity.this);
 //        productListAdapter.setOnClickListener(this);
         GridLayoutManager gridProductList = new GridLayoutManager(this, 2);
         recyclerView.setAdapter(productListAdapter);
@@ -138,6 +143,42 @@ public class ListProductActivity extends AppCompatActivity {
             }
         });
         //
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_context, menu);
+        return true;
+    }
+
+
+    //Menu Main Demo
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (R.id.action_cart == item.getItemId()) {
+            Intent intent = new Intent(ListProductActivity.this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (R.id.action_logout == item.getItemId()) {
+            SharedPreferences prefs = this.getSharedPreferences(Constants.PREFS_NAME, this.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.remove(Constants.USER_KEY);
+            editor.apply();
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
+            finish();
+        }
+
+        if(R.id.action_profile == item.getItemId()){
+            Intent intent = new Intent(ListProductActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return false;
+
     }
 
     private void getData() {

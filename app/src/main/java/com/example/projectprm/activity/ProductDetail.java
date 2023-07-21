@@ -3,7 +3,12 @@ package com.example.projectprm.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,6 +24,8 @@ import com.example.projectprm.Entity.Product;
 import com.example.projectprm.Entity.User;
 import com.example.projectprm.R;
 import com.example.projectprm.util.CartManager;
+import com.example.projectprm.util.Constants;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
@@ -48,9 +55,12 @@ public class ProductDetail extends AppCompatActivity {
         initRoomDatabase();
         Bundle extra = getIntent().getExtras();
         int productId = extra.getInt("productId", 0);
-        int userId = extra.getInt("userId", 0);
-        User u = userDAO.getUserById(userId);
 
+        SharedPreferences prefs = ProductDetail.this.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
+        String json = prefs.getString(Constants.USER_KEY, null);
+        Gson gson = new Gson();
+        int userId = gson.fromJson(json, Integer.class);
+        User u = userDAO.getUserById(userId);
         product = productDAO.findProductById(productId);
         image = findViewById(R.id.productDetailImage);
         Picasso.get().load(product.image).into(image);
@@ -128,4 +138,41 @@ public class ProductDetail extends AppCompatActivity {
         //Lưu vào bộ nhớ
         CartManager.saveCart(ProductDetail.this, cartItems);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_context, menu);
+        return true;
+    }
+
+
+    //Menu Main Demo
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (R.id.action_cart == item.getItemId()) {
+            Intent intent = new Intent(ProductDetail.this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (R.id.action_logout == item.getItemId()) {
+            SharedPreferences prefs = this.getSharedPreferences(Constants.PREFS_NAME, this.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.remove(Constants.USER_KEY);
+            editor.apply();
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
+            finish();
+        }
+
+        if (R.id.action_profile == item.getItemId()) {
+            Intent intent = new Intent(ProductDetail.this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return false;
+
+    }
+
 }

@@ -22,12 +22,10 @@ import java.util.List;
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListViewHolder> {
     private List<ProductDTO> productDTOList;
     private Context context;
-    private int userId;
 
-    public ProductListAdapter(List<ProductDTO> productDTOList, Context context, int userId) {
+    public ProductListAdapter(List<ProductDTO> productDTOList, Context context) {
         this.productDTOList = productDTOList;
         this.context = context;
-        this.userId = userId;
     }
 
     @NonNull
@@ -52,7 +50,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListViewHold
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProductDetail.class);
                 intent.putExtra("productId",productDTO.getProductId());
-                intent.putExtra("userId",userId);
                 context.startActivity(intent);
             }
         });

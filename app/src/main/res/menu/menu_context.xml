@@ -6,4 +6,19 @@
         android:icon="@drawable/ic_shopping_cart_24"
         android:title="cart"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_shopping_cart_24"
+        android:title="Profile"
+         />
+    <item
+        android:id="@+id/action_order"
+        android:icon="@drawable/ic_shopping_cart_24"
+        android:title="Order"
+        />
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_shopping_cart_24"
+        android:title="Logout"
+        />
 </menu>

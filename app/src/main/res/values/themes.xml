@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
 
 
-    <style name="Theme.ProjectPRM" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.ProjectPRM" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/gray</item>
