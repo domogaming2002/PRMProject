@@ -48,6 +48,7 @@ public class Register extends AppCompatActivity {
                     userRegister.roleId = 2;
                     userDAO.insertUser(userRegister);
                     Toast.makeText(getApplicationContext(), "User Registered!", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Fill all fields or check your password!", Toast.LENGTH_SHORT).show();

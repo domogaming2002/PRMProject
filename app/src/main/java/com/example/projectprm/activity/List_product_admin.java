@@ -1,6 +1,7 @@
 package com.example.projectprm.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +21,7 @@ import com.example.projectprm.DTO.AppDatabase;
 import com.example.projectprm.Entity.Product;
 import com.example.projectprm.R;
 import com.example.projectprm.adapter.ProductFragmentAdapter;
+import com.example.projectprm.util.Constants;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -120,6 +122,10 @@ public class List_product_admin extends AppCompatActivity implements ProductFrag
     private void logout() {
         // TODO: Thực hiện đăng xuất
         // Ví dụ: Chuyển đến màn hình đăng nhập và xóa thông tin đăng nhập
+        SharedPreferences prefs = this.getSharedPreferences(Constants.PREFS_NAME, this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove(Constants.USER_KEY);
+        editor.apply();
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);
         finish();
