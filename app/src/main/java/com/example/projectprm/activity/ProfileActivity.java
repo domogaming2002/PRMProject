@@ -3,7 +3,12 @@ package com.example.projectprm.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +21,8 @@ import com.example.projectprm.DAO.UserDAO;
 import com.example.projectprm.DTO.AppDatabase;
 import com.example.projectprm.Entity.User;
 import com.example.projectprm.R;
+import com.example.projectprm.util.Constants;
+import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -53,7 +60,11 @@ public class ProfileActivity extends AppCompatActivity {
         spinner.setAdapter(genderAdapter);
         //
 
-        User u = userDAO.getUserById(1);
+        SharedPreferences prefs = ProfileActivity.this.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);
+        String json = prefs.getString(Constants.USER_KEY, null);
+        Gson gson = new Gson();
+        int userId = gson.fromJson(json, Integer.class);
+        User u = userDAO.getUserById(userId);
 
         uName = findViewById(R.id.profileUserName);
         uAddress = findViewById(R.id.profileUserAddress);
@@ -72,15 +83,18 @@ public class ProfileActivity extends AppCompatActivity {
         DatePicker datePicker = findViewById(R.id.profileDob);
 
         // Tạo đối tượng Calendar và thiết lập giá trị cho nó
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(u.dob);
-        datePicker.updateDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+        if(u.dob != null){
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(u.dob);
+            datePicker.updateDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+        }
 
         Button btn = findViewById(R.id.btnUpdateProfile);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User userUpdate = userDAO.getUserById(1);
+                User userUpdate = userDAO.getUserById(userId);
                 if( uName.getText().toString().trim().isEmpty() || uAddress.getText().toString().trim().isEmpty()
                         || uPhone.getText().toString().trim().isEmpty()){
                     Toast.makeText(getApplicationContext(), "Update Profile Fail. Not Allow null" , Toast.LENGTH_SHORT)
@@ -109,6 +123,42 @@ public class ProfileActivity extends AppCompatActivity {
                         .show();
             }
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_context, menu);
+        return true;
+    }
+
+
+    //Menu Main Demo
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (R.id.action_cart == item.getItemId()) {
+            Intent intent = new Intent(ProfileActivity.this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        if (R.id.action_logout == item.getItemId()) {
+            SharedPreferences prefs = this.getSharedPreferences(Constants.PREFS_NAME, this.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.remove(Constants.USER_KEY);
+            editor.apply();
+            Intent loginIntent = new Intent(this, Login.class);
+            startActivity(loginIntent);
+            finish();
+        }
+
+        if (R.id.action_profile == item.getItemId()) {
+            Intent intent = new Intent(ProfileActivity.this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return false;
 
     }
 }
