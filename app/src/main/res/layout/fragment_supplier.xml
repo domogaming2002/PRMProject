@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.SupplierFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarsupplier"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:title="My Toolbar"
+        android:titleTextColor="@android:color/white"
+        android:elevation="4dp" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <SearchView
+            android:id="@+id/sv_supplier"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="6dp"
+            android:iconifiedByDefault="false"
+            app:queryHint="Search Supplier" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_Supplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="48dp"
+            android:backgroundTint="#FF9800"
+            android:src="@drawable/ic_baseline_add_24"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewSupplier"
+            android:layout_width="416dp"
+            android:layout_height="617dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="3dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/sv_supplier"
+            />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

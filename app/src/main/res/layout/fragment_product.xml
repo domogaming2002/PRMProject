@@ -1,0 +1,80 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDEDEF"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarproduct"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title="My Toolbar"
+            android:titleTextColor="@android:color/white"
+            android:elevation="4dp" />
+
+        <!--        header-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/primary">
+
+
+            <TextView
+                style="@style/textBase"
+                android:layout_centerInParent="true"
+                android:text="List Products"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_Product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:backgroundTint="@color/primary"
+                android:src="@drawable/ic_plus"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </RelativeLayout>
+
+        <!-- SEARCH BAR -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/retangle_border_grey"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:id="@+id/sv_product"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="6dp"
+                android:iconifiedByDefault="false"
+                app:queryHint="Search Product" />
+
+        </RelativeLayout>
+        <!--                List đơn hàng-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:listitem="@layout/product_fragment_item" />
+
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

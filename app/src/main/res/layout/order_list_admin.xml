@@ -1,0 +1,75 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDEDEF"
+        android:orientation="vertical">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarorder"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:title="My Toolbar"
+            android:titleTextColor="@android:color/white"
+            android:elevation="4dp" />
+
+        <!--        header-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/primary">
+
+            <!--<ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:contentDescription="back arrow"
+                android:src="@drawable/ic_arrow_back_24" />-->
+
+            <TextView
+                style="@style/textBase"
+                android:layout_centerInParent="true"
+                android:text="List Orders"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <!-- SEARCH BAR -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/retangle_border_grey"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:id="@+id/sv_supplier"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="6dp"
+                android:iconifiedByDefault="false"
+                app:queryHint="Search Supplier" />
+
+        </RelativeLayout>
+        <!--                List đơn hàng-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            tools:listitem="@layout/order_item" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

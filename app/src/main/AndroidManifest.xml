@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,10 +18,7 @@
         <activity
             android:name=".activity.UserOrderListActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+
         <activity
             android:name=".activity.ProcessCheckoutActivity"
             android:exported="false" />
@@ -32,19 +32,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".activity.OrderDetailAdminActivity"
             android:exported="false" />
+
+
+
         <activity
-            android:name=".activity.ProductDetail"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ListProductActivity"
-            android:exported="true">
+            android:name=".activity.orderList_admin_activity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ProductDetail"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ListProductActivity"
+            android:exported="true">
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name=".activity.MainActivity"
@@ -57,6 +74,60 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+        <activity
+            android:name=".activity.Register"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".activity.Login"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Add_Supplier"
+            android:exported="true">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".activity.Add_Product"
+            android:exported="true" />
+        <activity
+            android:name=".activity.List_product_admin"
+            android:exported="true" />
+        <activity
+            android:name=".activity.List_supplier_admin"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".activity.Update_Supplier"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Update_Category"
+            android:exported="true" />
+        <activity
+            android:name=".activity.List_category_admin"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Add_Category"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Update_Product"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -20,12 +20,15 @@ public interface UserDAO {
     User getUserById(int id);
 
     @Insert
-    void insertUser(User... users);
+    void insertUser(User users);
 
     @Update
     void updateUser(User user);
 
     @Delete
     void deleteUser(User user);
+
+    @Query("Select * from User where email = :email and passwordHash = :passwordHash")
+    User getUserLogin(String email, String passwordHash);
 
 }

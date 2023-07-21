@@ -18,7 +18,13 @@ public interface CategoryDAO {
     @Query("Select * from category where categoryId = :id and isDelete = 0")
     Category getCategoryById(int id);
 
+    @Query("Select * from Category where name like  '%' || :pName || '%' and isDelete = 0")
+    List<Category> findCategoryByName(String pName);
+    @Query("Update Category SET isDelete = 1 Where categoryId = :sId")
+    void deleteCategoryById(int sId);
 
+    @Query("Select categoryId from Category where name = :cName")
+    int getCategoryIdByName(String cName);
     @Insert
     void insertCategory(Category... categories);
 
