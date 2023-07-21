@@ -1,6 +1,7 @@
 package com.example.projectprm.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,6 +21,7 @@ import com.example.projectprm.DTO.ProductDTO;
 import com.example.projectprm.Entity.Order;
 import com.example.projectprm.R;
 import com.example.projectprm.adapter.OrderListAdapter;
+import com.example.projectprm.util.Constants;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -127,6 +129,10 @@ public class orderList_admin_activity extends AppCompatActivity {
     private void logout() {
         // TODO: Thực hiện đăng xuất
         // Ví dụ: Chuyển đến màn hình đăng nhập và xóa thông tin đăng nhập
+        SharedPreferences prefs = this.getSharedPreferences(Constants.PREFS_NAME, this.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove(Constants.USER_KEY);
+        editor.apply();
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);
         finish();

@@ -3,6 +3,7 @@ package com.example.projectprm.util;
 public class Constants {
     public static final String PREFS_NAME = "MY_APP";
     public static final String CART_KEY = "MY_CART";
+    public static final String USER_KEY = "USER_ID";
     public static final int ORDER_PAYMENT_STATUS = 1;
     public static final int ORDER_PROCESS_STATUS = 2;
     public static final int ORDER_DELIVERY_STATUS = 3;
