@@ -7,19 +7,25 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.projectprm.DAO.OrderDAO;
 import com.example.projectprm.DTO.AppDatabase;
 import com.example.projectprm.DTO.OrderDTO;
+import com.example.projectprm.DTO.OrderRecycle;
 import com.example.projectprm.DTO.ProductDTO;
 import com.example.projectprm.Entity.Order;
 import com.example.projectprm.R;
+import com.example.projectprm.Repository.OrderRepository;
+import com.example.projectprm.adapter.OnOrderItemClickListener;
+import com.example.projectprm.adapter.OrderItemAdapter;
 import com.example.projectprm.adapter.OrderListAdapter;
 import com.example.projectprm.util.Constants;
 
@@ -30,71 +36,66 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class orderList_admin_activity extends AppCompatActivity {
-    ArrayList<OrderDTO> orderDTOS;
-    AppDatabase db;
-    OrderDAO orderDAO;
+public class orderList_admin_activity extends AppCompatActivity implements OnOrderItemClickListener {
     RecyclerView recyclerView;
-    OrderListAdapter orderListAdapter;
-    List<Order> orderList;
-
-    private void inItRoomDatabase() {
-        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "PRM")
-                .allowMainThreadQueries().build();
-        orderDAO = db.orderDAO();
-    }
+    OrderItemAdapter orderItemAdapter;
+    List<OrderRecycle> orderRecycleList;
+    OrderRepository orderRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order_list_admin);
-//        Toolbar toolbar = findViewById(R.id.toolbarorder);
-//        setSupportActionBar(toolbar);
 
-        orderDTOS = new ArrayList<>();
-        inItRoomDatabase();
-        createOrder();
-        orderList = orderDAO.getListOrder();
+        //instantiate
+        orderRepository = new OrderRepository(getApplicationContext());
 
-        for (Order order : orderList) {
-            orderDTOS.add(new OrderDTO(order.orderId, order.userId, order.orderCode, order.orderDate, order.shippedDate, order.fullname,
-                    order.email, order.address, order.phoneNumber, order.status, order.isDelete));
+        //hind action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
         }
 
+        setUpCartRecycleView();
+    }
+
+
+    private void setUpCartRecycleView() {
+        getUserOrderList();
+
+        //Set up adapter
+        orderItemAdapter = new OrderItemAdapter(orderRecycleList, orderList_admin_activity.this);
+        orderItemAdapter.setOnOrderItemClickListener(orderList_admin_activity.this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+
+        //SET recycleView
         recyclerView = findViewById(R.id.rvCart);
-        orderListAdapter = new OrderListAdapter(orderDTOS, this);
-        orderListAdapter.setOnItemClickListener(new OrderListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int orderId) {
-                Intent intent = new Intent(orderList_admin_activity.this, OrderDetailAdminActivity.class);
-                intent.putExtra("orderId",orderId);
-                startActivity(intent);
-            }
-        });
-
-        GridLayoutManager gridOrderList = new GridLayoutManager(this, 1);
-        recyclerView.setAdapter(orderListAdapter);
-        recyclerView.setLayoutManager(gridOrderList);
+        recyclerView.setAdapter(orderItemAdapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
     }
 
-    private void createOrder() {
-        Order o = new Order();
-        String dateString = "2023-07-20";
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        for (int i = 0; i< 10; i++){
-            o.orderCode = "Order" + i;
-            o.userId = 1 + i;
-            o.status = 0;
-            try {
-                o.orderDate = dateFormat.parse(dateString);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-            o.isDelete = false;
-            orderDAO.insertOrder(o);
-        }
-
+    private void getUserOrderList() {
+        orderRecycleList = orderRepository.getOrdersAll();
     }
+
+
+//    private void createOrder() {
+//        Order o = new Order();
+//        String dateString = "2023-07-20";
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        for (int i = 0; i< 10; i++){
+//            o.orderCode = "Order" + i;
+//            o.userId = 1 + i;
+//            o.status = 0;
+//            try {
+//                o.orderDate = dateFormat.parse(dateString);
+//            } catch (ParseException e) {
+//                throw new RuntimeException(e);
+//            }
+//            o.isDelete = false;
+//            orderDAO.insertOrder(o);
+//        }
+//
+//    }
 
 
     @Override
@@ -135,5 +136,17 @@ public class orderList_admin_activity extends AppCompatActivity {
         Intent loginIntent = new Intent(this, Login.class);
         startActivity(loginIntent);
         finish();
+    }
+
+    @Override
+    public void onDetailBtnClick(int position) {
+        Intent intent = new Intent(orderList_admin_activity.this, OrderDetailAdminActivity.class);
+        intent.putExtra("orderId", orderRecycleList.get(position).orderId);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onWriteReviewBtnClick(int position) {
+
     }
 }

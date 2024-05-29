@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectprm.DTO.CartItem;
 import com.example.projectprm.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -39,8 +40,8 @@ public class OrderDetailItemAdapter extends RecyclerView.Adapter<OrderDetailItem
         holder.productName.setText(cart.getProduct().getName());
         holder.quantity.setText(String.valueOf(cart.getQuantity()));
         holder.price.setText(String.valueOf(cart.getPrice() / 1000) + ".000 đ");
-        int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
-        holder.image.setImageResource(drawableId);
+        Picasso.get().load(cart.getProduct().getImage()).into(holder.image);
+//        int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
     }
 
     @Override

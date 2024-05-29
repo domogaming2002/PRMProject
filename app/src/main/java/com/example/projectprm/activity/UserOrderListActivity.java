@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.projectprm.DTO.CartItem;
@@ -34,6 +35,8 @@ public class UserOrderListActivity extends AppCompatActivity implements OnOrderI
 
     User loggedInUser;
     ImageView backToHomePage2;
+    EditText searchInput;
+    ImageView searchOrderBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,20 @@ public class UserOrderListActivity extends AppCompatActivity implements OnOrderI
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        searchInput = findViewById(R.id.searchInput);
+        searchOrderBtn = findViewById(R.id.searchOrderBtn);
+        searchOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchTxt = searchInput.getText().toString();
+                for (int i = 0; i < orderRecycleList.size(); i++) {
+                    if(!orderRecycleList.get(i).orderCode.contains(searchTxt)){
+                        orderRecycleList.remove(i);
+                    }
+                }
+                orderItemAdapter.notifyDataSetChanged();
             }
         });
 //        clickToBuy = findViewById(R.id.clickToBuy);

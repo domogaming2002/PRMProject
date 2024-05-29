@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectprm.DTO.OrderRecycle;
 import com.example.projectprm.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -46,8 +46,10 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemAdapter.Orde
         holder.numberOfItems.setText(String.valueOf(orderRecycle.numberOfItems));
         holder.orderTotalMoney.setText(String.valueOf(orderRecycle.totalMoney / 1000) + ".000 đ");
         holder.orderStatus.setText(orderRecycle.status);
-        int drawableId = mContext.getResources().getIdentifier(orderRecycle.representProduct.getProductDTO().getImage(), "drawable", mContext.getPackageName());
-        holder.productImage.setImageResource(drawableId);
+//        int drawableId = mContext.getResources().getIdentifier(orderRecycle.representProduct.getProductDTO().getImage(), "drawable", mContext.getPackageName());
+//        holder.productImage.setImageResource(drawableId);
+        Picasso.get().load(orderRecycle.representProduct.getProductDTO().getImage()).into(holder.productImage);
+
     }
 
     @Override

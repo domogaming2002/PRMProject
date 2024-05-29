@@ -44,7 +44,7 @@ public class CartManager {
                 if (buyCart.getProduct().getProductId() == cc.getProduct().getProductId()) {
                     iterator.remove(); // Sử dụng iterator để xóa phần tử an toàn
                     break; // Nếu tìm thấy và xóa, thoát khỏi vòng lặp for inner
-                }y
+                }
             }
         }
         SharedPreferences prefs = context.getSharedPreferences(Constants.PREFS_NAME, Context.MODE_PRIVATE);

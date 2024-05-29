@@ -7,6 +7,7 @@ import java.util.List;
 
 public class OrderRecycle {
     public int orderId;
+    public String orderCode;
     public OrderDetailDTO representProduct = new OrderDetailDTO();
     public String status;
     public int totalMoney;

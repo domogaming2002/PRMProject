@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projectprm.DTO.CartItem;
 import com.example.projectprm.R;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartViewHolder> {
@@ -45,8 +47,10 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartVi
         holder.oldPrice.setText(getDisplayPrice(cart.getProduct().getOldPrice()));
         holder.salePrice.setText(getDisplayPrice(cart.getProduct().getSalePrice()));
         holder.itemChooseCb.setChecked(cart.isChecked());
-        int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
-        holder.image.setImageResource(drawableId);
+//        int drawableId = mContext.getResources().getIdentifier(cart.getProduct().getImage(), "drawable", mContext.getPackageName());
+//        holder.image.setImageResource(drawableId);``
+        Picasso.get().load(cart.getProduct().getImage()).into(holder.image);
+
 
 //        holder.btnMinus.setOnClickListener(new View.OnClickListener() {
 //            @Override

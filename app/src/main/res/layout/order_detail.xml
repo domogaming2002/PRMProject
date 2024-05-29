@@ -264,7 +264,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                tools:itemCount="0"
+                tools:itemCount="1"
                 tools:listitem="@layout/order_detail_item" />
 
         </LinearLayout>

@@ -56,6 +56,29 @@ public class OrderRepository {
 
                 OrderRecycle orderRecycle = new OrderRecycle();
                 orderRecycle.orderId = order.orderId;
+                orderRecycle.orderCode = order.orderCode;
+                orderRecycle.representProduct = orderDetailRepository.getOrderDetailDTOWithNestedObject(firstOrderDetail);
+                orderRecycle.numberOfItems = orderDetails.size();
+                orderRecycle.totalMoney = OrderUtil.countTotalMoney(orderDetails);
+                orderRecycle.status = OrderUtil.getStatusStringByCode(order.status);
+                orderRecycleList.add(orderRecycle);
+            }
+        }
+        return orderRecycleList;
+    }
+
+    public List<OrderRecycle> getOrdersAll() {
+        List<Order> orders = orderDAO.getListOrder();
+
+        List<OrderRecycle> orderRecycleList = new ArrayList<>();
+        for (Order order : orders) {
+            List<OrderDetail> orderDetails = orderDetailRepository.getOrderDetailByOrderId(order.orderId);
+            if (!orderDetails.isEmpty()) {
+                OrderDetail firstOrderDetail = orderDetails.get(0);
+
+                OrderRecycle orderRecycle = new OrderRecycle();
+                orderRecycle.orderId = order.orderId;
+                orderRecycle.orderCode = order.orderCode;
                 orderRecycle.representProduct = orderDetailRepository.getOrderDetailDTOWithNestedObject(firstOrderDetail);
                 orderRecycle.numberOfItems = orderDetails.size();
                 orderRecycle.totalMoney = OrderUtil.countTotalMoney(orderDetails);
